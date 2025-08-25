@@ -21,27 +21,27 @@ void ResultFilter::get_metas(WindowMeta * metas)
 LPCTSTR ResultFilter::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="½á¹û¹ýÂË" size="420,300">
+<Window title="ç»“æžœè¿‡æ»¤" size="420,300">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="1" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="1" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
         <Vertical padding="5,5,5,5">
             <Horizontal>
                 <Vertical>
-                    <Label text="ÒÑÓÐ¹ýÂËÆ÷£¨Ë«»÷ÒÔÊ¹ÓÃ£©£º" height="18" />
+                    <Label text="å·²æœ‰è¿‡æ»¤å™¨ï¼ˆåŒå‡»ä»¥ä½¿ç”¨ï¼‰ï¼š" height="18" />
                     <ListView name="list" style="ownerdata,showselalways,tabstop" exstyle="clientedge" />
                 </Vertical>
                 <Control width="5" />
                 <Vertical width="50">
                     <Control height="18" />
-                    <Button name="all" text="È«²¿" height="24" style="tabstop" />
+                    <Button name="all" text="å…¨éƒ¨" height="24" style="tabstop" />
                     <Control height="10" />
-                    <Button name="add" text="Ìí¼Ó" height="24" style="tabstop"/>
+                    <Button name="add" text="æ·»åŠ " height="24" style="tabstop"/>
                     <Control height="5" />
-                    <Button name="delete" text="É¾³ý" style="disabled,tabstop" height="24"/>
+                    <Button name="delete" text="åˆ é™¤" style="disabled,tabstop" height="24"/>
                     <Control height="5" />
                 </Vertical>
             </Horizontal>
@@ -62,8 +62,8 @@ LRESULT ResultFilter::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
         _tipwnd->set_font(_mgr.get_font(L"default"));
 
         if(_currnet_project) {
-            std::wstring t(L"½á¹û¹ýÂË");
-            t += L"£¨Ä£¿é£º" + _currnet_project->name + L"£©";
+            std::wstring t(L"ç»“æžœè¿‡æ»¤");
+            t += L"ï¼ˆæ¨¡å—ï¼š" + _currnet_project->name + L"ï¼‰";
             ::SetWindowText(_hwnd, t.c_str());
         }
 
@@ -72,10 +72,10 @@ LRESULT ResultFilter::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
         _btn_delete = _root->find<taowin::Button>(L"delete");
         _btn_all    = _root->find<taowin::Button>(L"all");
 
-        _listview->insert_column(L"Ãû×Ö", 100, 0);
-        _listview->insert_column(L"×Ö¶Î", 50,  1);
-        _listview->insert_column(L"ÎÄ±¾", 130, 2);
-        _listview->insert_column(L"ÁÙÊ±", 50,  3);
+        _listview->insert_column(L"åå­—", 100, 0);
+        _listview->insert_column(L"å­—æ®µ", 50,  1);
+        _listview->insert_column(L"æ–‡æœ¬", 130, 2);
+        _listview->insert_column(L"ä¸´æ—¶", 50,  3);
 
         subclass_control(_listview);
 
@@ -172,9 +172,9 @@ LRESULT ResultFilter::on_notify(HWND hwnd, taowin::Control * pc, int code, NMHDR
                 _listview->update_source(LVSICF_NOINVALIDATEALL);
 
                 int index = _listview->get_item_count() - 1;
-                _listview->ensure_visible(index);   // È·±£¿É¼û
-                _listview->set_item_state(-1, LVIS_SELECTED, 0); //È¡ÏûÑ¡ÖÐÆäËüµÄ
-                _listview->set_item_state(index, LVIS_SELECTED, LVIS_SELECTED); //Ñ¡ÖÐµ±Ç°ÐÂÔöµÄ
+                _listview->ensure_visible(index);   // ç¡®ä¿å¯è§
+                _listview->set_item_state(-1, LVIS_SELECTED, 0); //å–æ¶ˆé€‰ä¸­å…¶å®ƒçš„
+                _listview->set_item_state(index, LVIS_SELECTED, LVIS_SELECTED); //é€‰ä¸­å½“å‰æ–°å¢žçš„
                 _listview->focus();
             };
 
@@ -220,34 +220,34 @@ void AddNewFilter::get_metas(WindowMeta * metas)
 LPCTSTR AddNewFilter::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="Ìí¼Ó¹ýÂË" size="350,160">
+<Window title="æ·»åŠ è¿‡æ»¤" size="350,160">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="1" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="1" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
         <Vertical>
             <Vertical name="container" padding="10,10,10,10" height="108">
                 <Horizontal height="30" padding="0,3,0,3">
-                    <Label style="centerimage" text="Ãû×Ö" width="50"/>
+                    <Label style="centerimage" text="åå­—" width="50"/>
                     <TextBox name="name" text="" style="tabstop" exstyle="clientedge"/>
                 </Horizontal>
                 <Horizontal height="30" padding="0,3,0,3">
-                    <Label style="centerimage" text="×Ö¶Î" width="50"/>
+                    <Label style="centerimage" text="å­—æ®µ" width="50"/>
                     <ComboBox name="field-name" style="tabstop" height="200"/>
                 </Horizontal>
                 <Horizontal height="30" padding="0,3,0,3">
-                    <Label style="centerimage" text="ÎÄ±¾" width="50"/>
+                    <Label style="centerimage" text="æ–‡æœ¬" width="50"/>
                     <Container>
                         <TextBox name="value-input" text="" style="tabstop" exstyle="clientedge" />
-                        <Vertical name="²»¼ÓÕâ¸ö£¬ÏÂÃæµÄComboBoxÏÔÊ¾²»³öÀ´">
+                        <Vertical name="ä¸åŠ è¿™ä¸ªï¼Œä¸‹é¢çš„ComboBoxæ˜¾ç¤ºä¸å‡ºæ¥">
                             <ComboBox name="value-name-1" style="tabstop,droplist" height="200" />
                         </Vertical>
-                        <Vertical name="²»¼ÓÕâ¸ö£¬ÏÂÃæµÄComboBoxÏÔÊ¾²»³öÀ´">
+                        <Vertical name="ä¸åŠ è¿™ä¸ªï¼Œä¸‹é¢çš„ComboBoxæ˜¾ç¤ºä¸å‡ºæ¥">
                             <ComboBox name="value-name-2" style="tabstop,dropdown" height="200" />
                         </Vertical>
-                        <Vertical name="²»¼ÓÕâ¸ö£¬ÏÂÃæµÄComboBoxÏÔÊ¾²»³öÀ´">
+                        <Vertical name="ä¸åŠ è¿™ä¸ªï¼Œä¸‹é¢çš„ComboBoxæ˜¾ç¤ºä¸å‡ºæ¥">
                             <ComboBox name="value-name-3" style="tabstop,dropdown,vscroll,ownerdrawfixed,hasstrings" height="200" />
                         </Vertical>
                     </Container>
@@ -255,9 +255,9 @@ LPCTSTR AddNewFilter::get_skin_xml() const
             </Vertical>
             <Horizontal height="40" padding="10,4,10,4">
                 <Control />
-                <Button name="save" text="±£´æ" width="50" style="tabstop,default"/>
+                <Button name="save" text="ä¿å­˜" width="50" style="tabstop,default"/>
                 <Control width="10" />
-                <Button name="cancel" text="È¡Ïû" width="50" style="tabstop"/>
+                <Button name="cancel" text="å–æ¶ˆ" width="50" style="tabstop"/>
             </Horizontal>
         </Vertical>
     </Root>
@@ -389,7 +389,7 @@ int AddNewFilter::_on_save()
 
     try {
         if(iscbo) {
-            // ¿É±à¼­£¬²¢ÇÒ±à¼­¹ý
+            // å¯ç¼–è¾‘ï¼Œå¹¶ä¸”ç¼–è¾‘è¿‡
             auto sel = _value_name->get_cur_sel();
             if(_value_editable && sel == -1) {
                 value_input = _value_name->get_text();
@@ -423,7 +423,7 @@ int AddNewFilter::_on_save()
         close(IDOK);
     }
     catch(const std::wstring& err) {
-        msgbox(err, MB_ICONERROR, L"´íÎó");
+        msgbox(err, MB_ICONERROR, L"é”™è¯¯");
         if(iscbo) _value_name->focus();
         else _value_input->focus();
     }

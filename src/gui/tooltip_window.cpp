@@ -128,16 +128,16 @@ LRESULT TooltipWindow::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
     return __super::handle_message(umsg, wparam, lparam);
 }
 
-// µ÷Õû´°¿ÚµÄ×îÖÕÎ»ÖÃ
+// è°ƒæ•´çª—å£çš„æœ€ç»ˆä½ç½®
 void TooltipWindow::adjust_window_pos(const taowin::Rect& calc)
 {
-    // calc ÊÇ¼ÆËã³öµÄÎÄ×ÖËùÕ¼¾ÝµÄ´óÐ¡
+    // calc æ˜¯è®¡ç®—å‡ºçš„æ–‡å­—æ‰€å æ®çš„å¤§å°
     taowin::Rect rc(calc);
 
-    // ¼ÓÉÏÎÄ×ÖÍâ±ß¾à
+    // åŠ ä¸Šæ–‡å­—å¤–è¾¹è·
     rc.inflate(padding, padding);
 
-    // ÆÁÄ»ÐÅÏ¢
+    // å±å¹•ä¿¡æ¯
     taowin::Rect rcScreen;
     {
         HMONITOR hMonitor = ::MonitorFromPoint(_pt, MONITOR_DEFAULTTONEAREST);
@@ -153,15 +153,15 @@ void TooltipWindow::adjust_window_pos(const taowin::Rect& calc)
 
     rcScreen.deflate(padding, padding);
 
-    // ÏÞÖÆ´óÐ¡ÎªÆÁÄ»´óÐ¡£¨¹¤×÷Çø£©
+    // é™åˆ¶å¤§å°ä¸ºå±å¹•å¤§å°ï¼ˆå·¥ä½œåŒºï¼‰
     if(rc.width() > rcScreen.width())   rc.right = rc.left + rcScreen.width();
     if(rc.height() > rcScreen.height()) rc.bottom = rc.top + rcScreen.height();
 
-    // ¸ù¾Ýµ±Ç°Êó±ê¶¨Î»Ô­µã
+    // æ ¹æ®å½“å‰é¼ æ ‡å®šä½åŽŸç‚¹
     ::GetCursorPos(&_pt);
     rc.offset(_pt.x + offset, _pt.y + offset);
 
-    // ²»ÄÜ³¬³öÆÁÄ»±ßÔµ
+    // ä¸èƒ½è¶…å‡ºå±å¹•è¾¹ç¼˜
     int dxscr = rc.right - rcScreen.right;
     int dyscr = rc.bottom - rcScreen.bottom;
     if(dxscr > 0 || dyscr > 0) {

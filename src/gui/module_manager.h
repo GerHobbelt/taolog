@@ -32,7 +32,7 @@ public:
             switch (subitem)
             {
             case 0: value = mod->name.c_str();                   break;
-            case 1: value = mod->enable ? L"ÒÑÆôÓÃ" : L"ÒÑ½ûÓÃ";  break;
+            case 1: value = mod->enable ? L"å·²å¯ç”¨" : L"å·²ç¦ç”¨";  break;
             }
 
             return value;

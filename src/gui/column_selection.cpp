@@ -15,10 +15,10 @@ void ColumnSelection::get_metas(WindowMeta * metas)
 LPCTSTR ColumnSelection::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="±íÍ·" size="512,480">
+<Window title="è¡¨å¤´" size="512,480">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="1" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="1" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
@@ -58,7 +58,7 @@ LRESULT ColumnSelection::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
             valid_index++;
         }
 
-        // Ê¼ÖÕÑ¡ÔñµÚ1¸ö£¨½ûÖ¹ÐÞ¸Ä£©
+        // å§‹ç»ˆé€‰æ‹©ç¬¬1ä¸ªï¼ˆç¦æ­¢ä¿®æ”¹ï¼‰
         if(_columns.size()) {
             container->operator[](0)->set_enabled(false);
         }

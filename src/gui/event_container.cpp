@@ -26,10 +26,10 @@ std::wstring EventContainer::to_tip() const
 
     str.reserve(2048);
 
-    str += L"Ãû×Ö£º" + name + L"\bn";
-    str += L"×Ö¶Î£º" + field_name + L"\bn";
-    str += L"ÎÄ±¾£º" + (!value_input.empty() ? value_input : value_name) + L"\bn";
-    str += L"ÁÙÊ±£º" + std::wstring(is_tmp ? L"ÊÇ" : L"·ñ") + L"\bn";
+    str += L"åå­—ï¼š" + name + L"\bn";
+    str += L"å­—æ®µï¼š" + field_name + L"\bn";
+    str += L"æ–‡æœ¬ï¼š" + (!value_input.empty() ? value_input : value_name) + L"\bn";
+    str += L"ä¸´æ—¶ï¼š" + std::wstring(is_tmp ? L"æ˜¯" : L"å¦") + L"\bn";
 
     return std::move(str);
 }
@@ -118,47 +118,47 @@ void EventContainer::enable_filter(bool b)
                     _regex_input = std::wregex(s, std::regex_constants::icase);
                 }
                 catch(...) {
-                    throw std::wstring(L"´íÎóµÄÕıÔò±í´ïÊ½¡£");
+                    throw std::wstring(L"é”™è¯¯çš„æ­£åˆ™è¡¨è¾¾å¼ã€‚");
                 }
             }
             else if(value_input[0] == '`') {
-                // ÊµÔÚ²»ÖªµÀÔõÃ´°Ñ lua ´«ÆğÀ´£¬ÏÈ¾ÍÕâÑù°É
+                // å®åœ¨ä¸çŸ¥é“æ€ä¹ˆæŠŠ lua ä¼ èµ·æ¥ï¼Œå…ˆå°±è¿™æ ·å§
                 g_evtsys.trigger(L"get_lua", &lua);
 
                 auto script = g_config.us(value_input.substr(1));
 
-                // ÏÈÇå¿Õ filter º¯Êı
+                // å…ˆæ¸…ç©º filter å‡½æ•°
                 lua_pushnil(lua);
                 lua_setglobal(lua, "filter");
 
-                // Ö´ĞĞ¹ıÂË½Å±¾
+                // æ‰§è¡Œè¿‡æ»¤è„šæœ¬
                 if(luaL_dostring(lua, script.c_str()) != LUA_OK) {
                     std::wstring err(g_config.ws(lua_tostring(lua, -1)));
                     lua_pop(lua, 1);
-                    throw std::wstring(L"LUA½Å±¾´íÎó£º") + err;
+                    throw std::wstring(L"LUAè„šæœ¬é”™è¯¯ï¼š") + err;
                 }
 
-                // ÅĞ¶ÏÊÇ·ñÓĞ filter º¯Êı
+                // åˆ¤æ–­æ˜¯å¦æœ‰ filter å‡½æ•°
                 lua_getglobal(lua, "filter");
                 if(lua_type(lua, -1) != LUA_TFUNCTION) {
                     lua_pop(lua, 1);
-                    throw std::wstring(L"LUA½Å±¾ĞèÒªÌá¹©Ò»¸öÃûÎª `filter' µÄÈ«¾Öº¯Êı¡£");
+                    throw std::wstring(L"LUAè„šæœ¬éœ€è¦æä¾›ä¸€ä¸ªåä¸º `filter' çš„å…¨å±€å‡½æ•°ã€‚");
                 }
 
-                // ½«º¯Êı±£´æÆğÀ´
+                // å°†å‡½æ•°ä¿å­˜èµ·æ¥
                 lua_cookie = luaL_ref(lua, LUA_REGISTRYINDEX);
             }
         }
 
         _filter = [&](const EVENT& evt) {
             if(!value_input.empty() && value_input[0] == '`') {
-                // ÄÃµ½ lua º¯Êı
+                // æ‹¿åˆ° lua å‡½æ•°
                 lua_rawgeti(lua, LUA_REGISTRYINDEX, lua_cookie);
 
-                // Ñ¹Èë log ²ÎÊı
+                // å‹å…¥ log å‚æ•°
                 evt->to_luaobj(lua);
 
-                // µ÷ÓÃ ¹ıÂË º¯Êı
+                // è°ƒç”¨ è¿‡æ»¤ å‡½æ•°
                 int ret = lua_pcall(lua, 1, 1, 0);
                 if(ret != LUA_OK) {
                     std::wstring err(g_config.ws(lua_tostring(lua, -1)));
@@ -168,7 +168,7 @@ void EventContainer::enable_filter(bool b)
 
                 if(lua_type(lua, -1) != LUA_TBOOLEAN) {
                     lua_pop(lua, 1);
-                    throw std::wstring(L"¹ıÂËº¯ÊıÓ¦µ±·µ»Ø²¼¶ûÀàĞÍ¡£");
+                    throw std::wstring(L"è¿‡æ»¤å‡½æ•°åº”å½“è¿”å›å¸ƒå°”ç±»å‹ã€‚");
                 }
 
                 bool add = !!lua_toboolean(lua, -1);
@@ -192,24 +192,24 @@ void EventContainer::enable_filter(bool b)
                 };
 
                 switch(field_index) {
-                    // ±àºÅ£¬Ê±¼ä£¬½ø³Ì£¬Ïß³Ì£¬ĞĞºÅ
-                    // Ö±½ÓÖ´ĞĞÏàµÈĞÔ±È½Ï£¨Çø·Ö´óĞ¡Ğ´£©
+                    // ç¼–å·ï¼Œæ—¶é—´ï¼Œè¿›ç¨‹ï¼Œçº¿ç¨‹ï¼Œè¡Œå·
+                    // ç›´æ¥æ‰§è¡Œç›¸ç­‰æ€§æ¯”è¾ƒï¼ˆåŒºåˆ†å¤§å°å†™ï¼‰
                 case 0: case 1: case 2: case 3: case 7:
                 {
                     return p != value_input;
                 }
-                // ÎÄ¼ş£¬º¯Êı£¬ÈÕÖ¾
-                // Ö´ĞĞ²»Çø·Ö´óĞ¡Ğ´µÄËÑË÷
+                // æ–‡ä»¶ï¼Œå‡½æ•°ï¼Œæ—¥å¿—
+                // æ‰§è¡Œä¸åŒºåˆ†å¤§å°å†™çš„æœç´¢
                 case 5: case 6: case 9:
                 {
                     return !search_value_in_p();
                 }
-                // Ä£¿é
+                // æ¨¡å—
                 case 4:
                 {
                     return value_name != p;
                 }
-                // µÈ¼¶
+                // ç­‰çº§
                 case 8:
                 {
                     return value_index != evt->level;
@@ -227,15 +227,15 @@ void EventContainer::enable_filter(bool b)
 
 void EventSearcher::reset(EventContainer* haystack, const std::vector<int>& cols, const std::wstring& s) throw(...)
 {
-    // ±»ËÑË÷µÄÊÂ¼şÈİÆ÷
+    // è¢«æœç´¢çš„äº‹ä»¶å®¹å™¨
     _haystack = haystack;
 
-    // ±»ËÑË÷µÄÁĞ
-    // EventContainer µÄÁĞ²»Ö§³Ö -1
-    // ĞèÒªÔÚÕâÀïÇĞ»»
+    // è¢«æœç´¢çš„åˆ—
+    // EventContainer çš„åˆ—ä¸æ”¯æŒ -1
+    // éœ€è¦åœ¨è¿™é‡Œåˆ‡æ¢
     _cols = cols;
 
-    // Èç¹ûÊÇËÑË÷ÊıÖµĞÍ×Ö¶Î
+    // å¦‚æœæ˜¯æœç´¢æ•°å€¼å‹å­—æ®µ
     try {
         _needle.value_index = std::stoi(s);
     }
@@ -243,13 +243,13 @@ void EventSearcher::reset(EventContainer* haystack, const std::vector<int>& cols
         _needle.value_index = -1;
     }
 
-    // Èç¹ûÊÇ±È½Ï value_name
+    // å¦‚æœæ˜¯æ¯”è¾ƒ value_name
     _needle.value_name = s;
 
-    // Èç¹ûÊÇ±È½Ï value_input
+    // å¦‚æœæ˜¯æ¯”è¾ƒ value_input
     _needle.value_input = s;
 
-    // ÖØÖÃ¿ªÊ¼ËÑË÷
+    // é‡ç½®å¼€å§‹æœç´¢
     _last = -1;
     _needle.clear();
 
@@ -270,11 +270,11 @@ int EventSearcher::next(bool forward)
         return last(-1);
     }
 
-    // ÖØÖÃÁĞÆ¥Åä½á¹û±ê¼Ç
+    // é‡ç½®åˆ—åŒ¹é…ç»“æœæ ‡è®°
     for(int i = 0; i < _countof(_match_cols); i++)
         _match_cols[i] = false;
 
-    // µÃµ½ÏÂÒ»ËÑË÷ĞĞ
+    // å¾—åˆ°ä¸‹ä¸€æœç´¢è¡Œ
     auto la_next_line = [&] {return forward ? last() + 1 : last() - 1; };
 
     int next_line;

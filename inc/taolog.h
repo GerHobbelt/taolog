@@ -55,18 +55,18 @@ public:
     #pragma pack(push,1)
     struct LogData
     {
-        UCHAR           version;                            // ÈÕÖ¾°æ±¾
-        int             pid;                                // ½ø³Ì±àºÅ
-        int             tid;                                // Ïß³Ì±àºÅ
-        UCHAR           level;                              // ÈÕÖ¾µÈ¼¶
-        UINT            flags;                              // ±ê¼ÇÎ»
-        GUID            guid;                               // Éú³ÉÕß
-        SYSTEMTIME      time;                               // Ê±¼ä´Á
-        unsigned int    line;                               // ĞĞºÅ
-        unsigned int    cch;                                // ×Ö·ûÊı£¨°üº¬null£©
-        wchar_t         file[260];                          // ÎÄ¼ş
-        wchar_t         func[260];                          // º¯Êı
-        wchar_t         text[TAOLOG_MAX_LOG_SIZE];          // ÈÕÖ¾
+        UCHAR           version;                            // æ—¥å¿—ç‰ˆæœ¬
+        int             pid;                                // è¿›ç¨‹ç¼–å·
+        int             tid;                                // çº¿ç¨‹ç¼–å·
+        UCHAR           level;                              // æ—¥å¿—ç­‰çº§
+        UINT            flags;                              // æ ‡è®°ä½
+        GUID            guid;                               // ç”Ÿæˆè€…
+        SYSTEMTIME      time;                               // æ—¶é—´æˆ³
+        unsigned int    line;                               // è¡Œå·
+        unsigned int    cch;                                // å­—ç¬¦æ•°ï¼ˆåŒ…å«nullï¼‰
+        wchar_t         file[260];                          // æ–‡ä»¶
+        wchar_t         func[260];                          // å‡½æ•°
+        wchar_t         text[TAOLOG_MAX_LOG_SIZE];          // æ—¥å¿—
     };
     #pragma pack(pop)
 
@@ -300,7 +300,7 @@ public:
 		}		
 	}
 
-	// ÅĞ¶ÏÊÇ·ñ´òÓ¡ÈÕÖ¾
+	// åˆ¤æ–­æ˜¯å¦æ‰“å°æ—¥å¿—
 	bool IsLog(unsigned char level)
 	{
         return m_traceOn && level <= m_enableLevel;
@@ -368,7 +368,7 @@ public:
         EVENT_TRACE_HEADER& hdr = logmsg->hdr;
         memset(&hdr, 0, sizeof(hdr));
 
-        // »¹Ã»¸ã¶® MSDN ÉÏÏÂÃæÕâ¾ä»°µÄÒâË¼
+        // è¿˜æ²¡ææ‡‚ MSDN ä¸Šä¸‹é¢è¿™å¥è¯çš„æ„æ€
         // On input, the size must be less than the size of the event tracing session's buffer minus 72 (0x48)
         hdr.Size            = (USHORT)(sizeof(hdr) + offsetof(LogData, text) + data.cch * sizeof(data.text[0]));
         hdr.Class.Type      = EVENT_TRACE_TYPE_INFO;

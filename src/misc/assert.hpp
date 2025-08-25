@@ -48,17 +48,17 @@ public:
 
 	void Warning()
 	{
-		std::wstring str(L"¾¯¸æ: Ó¦ÓÃ³ÌĞòÓöµ½¾¯¸æĞÔ´íÎó!\n\n");
+		std::wstring str(L"è­¦å‘Š: åº”ç”¨ç¨‹åºé‡åˆ°è­¦å‘Šæ€§é”™è¯¯!\n\n");
 		str += m_expr;
 
-		::MessageBox(nullptr, str.c_str(), L"¶ÏÑÔÊ§°Ü", MB_ICONWARNING);
+		::MessageBox(nullptr, str.c_str(), L"æ–­è¨€å¤±è´¥", MB_ICONWARNING);
 	}
 
 	void Fatal()
 	{
-		std::wstring str(L"´íÎó: Ó¦ÓÃ³ÌĞòÓöµ½ÑÏÖØĞÔ´íÎó!\n\n");
+		std::wstring str(L"é”™è¯¯: åº”ç”¨ç¨‹åºé‡åˆ°ä¸¥é‡æ€§é”™è¯¯!\n\n");
 		str += m_expr;
-		::MessageBox(nullptr, str.c_str(), L"¶ÏÑÔÊ§°Ü", MB_ICONERROR);
+		::MessageBox(nullptr, str.c_str(), L"æ–­è¨€å¤±è´¥", MB_ICONERROR);
 	}
 
 private:

@@ -37,7 +37,7 @@ int __stdcall wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdline, int nSh
 #endif
 
     std::set_new_handler([] {
-        ::MessageBox(nullptr, L"�ڴ治�㡣", nullptr, MB_ICONEXCLAMATION);
+        ::MessageBox(nullptr, L"内存不足。", nullptr, MB_ICONEXCLAMATION);
     });
 
     test();

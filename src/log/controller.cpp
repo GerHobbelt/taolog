@@ -14,7 +14,7 @@ bool Controller::start(const wchar_t* session)
 
     size_t size = sizeof(EVENT_TRACE_PROPERTIES) + (_name.size() + 1)*sizeof(TCHAR);
 
-    // TODO 这里写得很有问题
+    // TODO 杩欓噷鍐欏緱寰堟湁闂
 restart:
     _props = (EVENT_TRACE_PROPERTIES*)new char[size]();
     _props->Wnode.BufferSize = size;

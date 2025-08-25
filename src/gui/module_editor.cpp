@@ -16,17 +16,17 @@ void ModuleEntryEditor::get_metas(WindowMeta * metas)
 LPCTSTR ModuleEntryEditor::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="Ìí¼ÓÄ£¿é" size="350,200">
+<Window title="æ·»åŠ æ¨¡å—" size="350,200">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="1" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="1" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
         <Vertical>
             <Vertical name="container" padding="10,10,10,10" height="144">
                 <Horizontal height="30" padding="0,3,0,3">
-                    <Label style="centerimage" text="Ãû×Ö" width="50"/>
+                    <Label style="centerimage" text="åå­—" width="50"/>
                     <TextBox name="name" style="tabstop" exstyle="clientedge"/>
                 </Horizontal>
                 <Horizontal height="30" padding="0,3,0,3">
@@ -34,19 +34,19 @@ LPCTSTR ModuleEntryEditor::get_skin_xml() const
                     <TextBox name="guid" style="tabstop" exstyle="clientedge" />
                 </Horizontal>
                 <Horizontal height="30" padding="0,3,0,3">
-                    <Label style="centerimage" text="Ä¿Â¼" width="50"/>
+                    <Label style="centerimage" text="ç›®å½•" width="50"/>
                     <TextBox name="root" style="tabstop" exstyle="clientedge" />
                 </Horizontal>
                 <Horizontal height="30" padding="0,3,0,3">
-                    <Label style="centerimage" text="µÈ¼¶" width="50"/>
+                    <Label style="centerimage" text="ç­‰çº§" width="50"/>
                     <ComboBox name="level" style="tabstop" height="200"/>
                 </Horizontal>
             </Vertical>
             <Horizontal height="40" padding="10,4,10,4">
                 <Control />
-                <Button name="ok" text="±£´æ" width="50" style="tabstop,default"/>
+                <Button name="ok" text="ä¿å­˜" width="50" style="tabstop,default"/>
                 <Control width="10" />
-                <Button name="cancel" text="È¡Ïû" width="50" style="tabstop"/>
+                <Button name="cancel" text="å–æ¶ˆ" width="50" style="tabstop"/>
             </Horizontal>
         </Vertical>
     </Root>
@@ -60,7 +60,7 @@ LRESULT ModuleEntryEditor::handle_message(UINT umsg, WPARAM wparam, LPARAM lpara
     switch (umsg) {
     case WM_CREATE:
     {
-        ::SetWindowText(_hwnd, !_mod ? L"Ìí¼ÓÄ£¿é" : L"ÐÞ¸ÄÄ£¿é");
+        ::SetWindowText(_hwnd, !_mod ? L"æ·»åŠ æ¨¡å—" : L"ä¿®æ”¹æ¨¡å—");
 
         _name = _root->find<taowin::TextBox>(L"name");
         _path = _root->find<taowin::TextBox>(L"root");
@@ -164,7 +164,7 @@ int ModuleEntryEditor::_on_ok()
 bool ModuleEntryEditor::_validate_form()
 {
     if (_name->get_text() == L"") {
-        msgbox(L"Ä£¿éÃû×Ö²»Ó¦Îª¿Õ¡£", MB_ICONERROR);
+        msgbox(L"æ¨¡å—åå­—ä¸åº”ä¸ºç©ºã€‚", MB_ICONERROR);
         _name->focus();
         return false;
     }
@@ -172,7 +172,7 @@ bool ModuleEntryEditor::_validate_form()
     auto guid = _guid->get_text();
     CLSID clsid;
     if (FAILED(::CLSIDFromString(guid.c_str(), &clsid)) || ::IsEqualGUID(clsid, GUID_NULL)) {
-        msgbox(L"ÎÞÐ§ GUID Öµ¡£", MB_ICONERROR);
+        msgbox(L"æ— æ•ˆ GUID å€¼ã€‚", MB_ICONERROR);
         _guid->focus();
         return false;
     }

@@ -49,7 +49,7 @@ start:
 
         _module_from_guid(item->guid, &item->strProject, &root);
 
-        // Ïà¶ÔÂ·¾¶
+        // ç›¸å¯¹è·¯å¾„
         item->offset_of_file = 0;
         if(*item->file && root) {
             if(::_wcsnicmp(item->file, root->c_str(), root->size()) == 0) {
@@ -59,18 +59,18 @@ start:
 
         item->strLevel = &_level_maps[item->level].cmt1;
 
-        // È«²¿ÊÂ¼þÈÝÆ÷
+        // å…¨éƒ¨äº‹ä»¶å®¹å™¨
         _events.add(item);
 
-        // ´ø¹ýÂËµÄÊÂ¼þÈÝÆ÷£¨Ö¸Õë¸´ÓÃ£©
+        // å¸¦è¿‡æ»¤çš„äº‹ä»¶å®¹å™¨ï¼ˆæŒ‡é’ˆå¤ç”¨ï¼‰
         if(!_filters.empty()) {
             for(auto& f : _filters) {
                 f->add(item);
             }
         }
 
-        // Ä¬ÈÏÊÇ·Ç×Ô¶¯¹öÆÁµ½×îºóÒ»ÐÐµÄ
-        // µ«Èç¹ûµ±Ç°½¹µãÐÐÊÇ×îºóÒ»ÐÐ£¬Ôò×Ô¶¯¹öÆÁ
+        // é»˜è®¤æ˜¯éžè‡ªåŠ¨æ»šå±åˆ°æœ€åŽä¸€è¡Œçš„
+        // ä½†å¦‚æžœå½“å‰ç„¦ç‚¹è¡Œæ˜¯æœ€åŽä¸€è¡Œï¼Œåˆ™è‡ªåŠ¨æ»šå±
         int count = (int)_current_filter->size();
         int sic_flag = LVSICF_NOINVALIDATEALL | LVSICF_NOSCROLL;
         bool is_last_focused = count > 1 && (_listview->get_item_state(count - 2, LVIS_FOCUSED) & LVIS_FOCUSED)

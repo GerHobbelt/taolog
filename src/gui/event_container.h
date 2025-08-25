@@ -49,14 +49,14 @@ public:
     bool is_lua() const { return !value_input.empty() && value_input[0] == '`'; }
 
 public:
-    std::wstring name;              // ÈİÆ÷µÄÃû×Ö
-    std::wstring field_name;        // »ùÓÚÄÄ¸ö×Ö¶Î
-    int          field_index;       // ×Ö¶ÎË÷Òı
-    std::wstring value_name;        // ËùÑ¡µÄÖµµÄÃû×Ö
-    int          value_index;       // ËùÑ¡µÄÖµµÄË÷Òı
-    std::wstring value_input;       // ×Ô¶¨ÒåÊäÈë
+    std::wstring name;              // å®¹å™¨çš„åå­—
+    std::wstring field_name;        // åŸºäºå“ªä¸ªå­—æ®µ
+    int          field_index;       // å­—æ®µç´¢å¼•
+    std::wstring value_name;        // æ‰€é€‰çš„å€¼çš„åå­—
+    int          value_index;       // æ‰€é€‰çš„å€¼çš„ç´¢å¼•
+    std::wstring value_input;       // è‡ªå®šä¹‰è¾“å…¥
 
-    bool         is_tmp;            // ÁÙÊ±Ê¹ÓÃµÄ
+    bool         is_tmp;            // ä¸´æ—¶ä½¿ç”¨çš„
 
     lua_State*   lua;               // LUA
     int          lua_cookie;

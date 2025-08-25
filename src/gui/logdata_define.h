@@ -10,28 +10,28 @@ enum class ETW_LOGGER_FLAG {
 };
 
 
-// Ò»¶¨Òª¸ú etwlogger.h ÖĞµÄ¶¨ÒåÕûÌåÒ»ÖÂ
-// ³ı£º
-//      Ã»ÓĞ×îºóÒ»¸öÔªËØ
-//      ×Ö·û¼¯¿ÉÄÜ²»Ò»Ñù
+// ä¸€å®šè¦è·Ÿ etwlogger.h ä¸­çš„å®šä¹‰æ•´ä½“ä¸€è‡´
+// é™¤ï¼š
+//      æ²¡æœ‰æœ€åä¸€ä¸ªå…ƒç´ 
+//      å­—ç¬¦é›†å¯èƒ½ä¸ä¸€æ ·
 #pragma pack(push,1)
 struct LogData
 {
-    UCHAR           version;        // ÈÕÖ¾°æ±¾
-    int             pid;            // ½ø³Ì±àºÅ
-    int             tid;            // Ïß³Ì±àºÅ
-    UCHAR           level;          // ÈÕÖ¾µÈ¼¶
-    UINT            flags;          // ÈÕÖ¾Ïà¹ØµÄ±ê¼ÇÎ»
-    GUID            guid;           // Éú³ÉÕß GUID
-    SYSTEMTIME      time;           // Ê±¼ä´Á
-    unsigned int    line;           // ĞĞºÅ
-    unsigned int    cch;            // ×Ö·ûÊı£¨°üº¬null£©
-    wchar_t         file[260];      // ÎÄ¼ş
-    wchar_t         func[260];      // º¯Êı
+    UCHAR           version;        // æ—¥å¿—ç‰ˆæœ¬
+    int             pid;            // è¿›ç¨‹ç¼–å·
+    int             tid;            // çº¿ç¨‹ç¼–å·
+    UCHAR           level;          // æ—¥å¿—ç­‰çº§
+    UINT            flags;          // æ—¥å¿—ç›¸å…³çš„æ ‡è®°ä½
+    GUID            guid;           // ç”Ÿæˆè€… GUID
+    SYSTEMTIME      time;           // æ—¶é—´æˆ³
+    unsigned int    line;           // è¡Œå·
+    unsigned int    cch;            // å­—ç¬¦æ•°ï¼ˆåŒ…å«nullï¼‰
+    wchar_t         file[260];      // æ–‡ä»¶
+    wchar_t         func[260];      // å‡½æ•°
 };
 #pragma pack(pop)
 
-// ½çÃæĞèÒªÊ¹ÓÃ¸ü¶àµÄÊı¾İ
+// ç•Œé¢éœ€è¦ä½¿ç”¨æ›´å¤šçš„æ•°æ®
 struct LogDataUI : LogData
 {
     typedef std::basic_string<TCHAR> string;
@@ -85,7 +85,7 @@ struct LogDataUI : LogData
     static LogDataUI* from_dbgview(DWORD pid, const char* str, void* place = nullptr);
     static LogDataUI* from_logdata(LogData* log, void* place = nullptr);
 
-    string          strText;        // ÈÕÖ¾£¬Õâ¸ö±È½ÏÌØÊâ£¬ºÍÔ­½á¹¹Ìå²¢²»Í¬
+    string          strText;        // æ—¥å¿—ï¼Œè¿™ä¸ªæ¯”è¾ƒç‰¹æ®Šï¼Œå’ŒåŸç»“æ„ä½“å¹¶ä¸åŒ
 
     TCHAR id[22];
     TCHAR strTime[10+1+12+1];       // 2016-12-23 10:52:28:123

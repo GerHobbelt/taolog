@@ -30,21 +30,21 @@ LPCTSTR MainWindow::get_skin_xml() const
     LPCTSTR json = LR"tw(
 <Window title="Taolog Log Viewer" size="660,560">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="12" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="12" face="å¾®è½¯é›…é»‘" size="12"/>
     </Resource>
     <Root>
         <Vertical name="wrapper" padding="5,5,5,5">
             <Horizontal name="toolbar" height="30" padding="0,1,0,4">
-                <Label name="select-project-label" text="Ä£¿é£º" width="38" style="centerimage"/>
+                <Label name="select-project-label" text="æ¨¡å—ï¼š" width="38" style="centerimage"/>
                 <ComboBox name="select-project" style="tabstop" height="200" width="150" padding="0,0,4,0"/>
-                <Label text="¹ıÂË£º" width="38" style="centerimage"/>
+                <Label text="è¿‡æ»¤ï¼š" width="38" style="centerimage"/>
                 <ComboBox name="select-filter" style="tabstop" height="200" width="150" padding="0,0,4,0"/>
-                <Label text="²éÕÒ£º" width="38" style="centerimage"/>
+                <Label text="æŸ¥æ‰¾ï¼š" width="38" style="centerimage"/>
                 <ComboBox name="s-filter" style="tabstop" height="200" width="64" padding="0,0,4,0"/>
                 <TextBox name="s" width="100" style="tabstop" exstyle="clientedge"/>
                 <Control width="10" />
-                <Button name="tools" text="²Ëµ¥" width="60" style="tabstop"/>
+                <Button name="tools" text="èœå•" width="60" style="tabstop"/>
             </Horizontal>
             <ListView name="lv" style="showselalways,ownerdata,tabstop" exstyle="clientedge,doublebuffer,headerdragdrop"/>
         </Vertical>
@@ -117,27 +117,27 @@ LRESULT MainWindow::control_message(taowin::SystemControl* ctl, UINT umsg, WPARA
                 }
             }
 
-            // Èç¹û½»¸øÄ¬ÈÏ´¦Àí£¬»á³öÏÖ×Ô¶¯Ñ¡ÖĞÊó±êËùÔÚĞĞµÄÆæ¹ÖÏÖÏó
+            // å¦‚æœäº¤ç»™é»˜è®¤å¤„ç†ï¼Œä¼šå‡ºç°è‡ªåŠ¨é€‰ä¸­é¼ æ ‡æ‰€åœ¨è¡Œçš„å¥‡æ€ªç°è±¡
             return 0;
         }
         else if(ctl == _edt_search) {
             auto tips = 
-L"ÇëÊäÈë´ıËÑË÷µÄÎÄ±¾¡£\n"
+L"è¯·è¾“å…¥å¾…æœç´¢çš„æ–‡æœ¬ã€‚\n"
 "\n"
-"ËÑË÷ÉÏÏÂÎÄÎª£ºµ±Ç°¹ıÂËÆ÷¡¢µ±Ç°ËÑË÷ÁĞ¡£\n"
+"æœç´¢ä¸Šä¸‹æ–‡ä¸ºï¼šå½“å‰è¿‡æ»¤å™¨ã€å½“å‰æœç´¢åˆ—ã€‚\n"
 "\n"
-"   1¡¢ËÑË÷ÎÄ±¾ÈôÒÔ ~ ¿ªÍ·£¬Ö´ĞĞÕıÔò±í´ïÊ½ËÑË÷£»\n"
-"   2¡¢ËÑË÷ÎÄ±¾ÈôÒÔ ` ¿ªÍ·£¬Ö´ĞĞ LUA ½Å±¾ËÑË÷£»\n"
-"   3¡¢ÆäËüÇé¿öÖ´ĞĞ²»Çø·Ö´óĞ¡Ğ´µÄÆÕÍ¨ÎÄ±¾ËÑË÷¡£\n"
+"   1ã€æœç´¢æ–‡æœ¬è‹¥ä»¥ ~ å¼€å¤´ï¼Œæ‰§è¡Œæ­£åˆ™è¡¨è¾¾å¼æœç´¢ï¼›\n"
+"   2ã€æœç´¢æ–‡æœ¬è‹¥ä»¥ ` å¼€å¤´ï¼Œæ‰§è¡Œ LUA è„šæœ¬æœç´¢ï¼›\n"
+"   3ã€å…¶å®ƒæƒ…å†µæ‰§è¡Œä¸åŒºåˆ†å¤§å°å†™çš„æ™®é€šæ–‡æœ¬æœç´¢ã€‚\n"
 "\n"
 "\bn"
-"¿ì½İ¼ü£º\bn"
-"    Ctrl + F             \bw130-   ¾Û½¹ËÑË÷¿ò\bn"
-"    Enter                \bw130-   Ö´ĞĞËÑË÷\bn"
-"    F3                   \bw130-   ËÑË÷ÏÂÒ»¸ö\bn"
-"    Shift + F3           \bw130-   ËÑË÷ÉÏÒ»¸ö\bn"
-"    Ctrl + Enter         \bw130-   Ìí¼Ó¹ıÂËÆ÷£¨ÁÙÊ±£©\bn"
-"    Ctrl + Shift + Enter \bw130-   Ìí¼Ó¹ıÂËÆ÷£¨¹Ì¶¨£©\bn"
+"å¿«æ·é”®ï¼š\bn"
+"    Ctrl + F             \bw130-   èšç„¦æœç´¢æ¡†\bn"
+"    Enter                \bw130-   æ‰§è¡Œæœç´¢\bn"
+"    F3                   \bw130-   æœç´¢ä¸‹ä¸€ä¸ª\bn"
+"    Shift + F3           \bw130-   æœç´¢ä¸Šä¸€ä¸ª\bn"
+"    Ctrl + Enter         \bw130-   æ·»åŠ è¿‡æ»¤å™¨ï¼ˆä¸´æ—¶ï¼‰\bn"
+"    Ctrl + Shift + Enter \bw130-   æ·»åŠ è¿‡æ»¤å™¨ï¼ˆå›ºå®šï¼‰\bn"
 ;
             _tipwnd->format(tips);
             return 0;
@@ -154,12 +154,12 @@ LRESULT MainWindow::on_menu(const taowin::MenuIDs& m)
             auto sib = _main_menu->find_sib(L"start");
             if(!_controller.started()) {
                 if(_start()) {
-                    sib->set_text(L"¹Ø±ÕÈÕÖ¾");
+                    sib->set_text(L"å…³é—­æ—¥å¿—");
                 }
             }
             else {
                 _stop();
-                sib->set_text(L"¿ªÆôÈÕÖ¾");
+                sib->set_text(L"å¼€å¯æ—¥å¿—");
             }
         }
         else if(m[1] == L"clear")   { _clear_results(); }
@@ -251,10 +251,10 @@ LRESULT MainWindow::on_menu(const taowin::MenuIDs& m)
                 );
 
                 utils::set_clipboard_text(buf);
-                msgbox(buf, 0, L"ÒÑ¸´ÖÆµ½¼ôÌù°å");
+                msgbox(buf, 0, L"å·²å¤åˆ¶åˆ°å‰ªè´´æ¿");
             }
             else {
-                msgbox(L"´´½¨Ê§°Ü¡£", MB_ICONERROR);
+                msgbox(L"åˆ›å»ºå¤±è´¥ã€‚", MB_ICONERROR);
             }
         }
         else if(m[1] == L"export") {
@@ -403,12 +403,12 @@ bool MainWindow::filter_special_key(int vk)
         _searcher.last(-1);
 
         if(_do_search(true)) {
-            // Èç¹ûÓĞËÑË÷½á¹û£¬²¢ÇÒ°´×¡ÁËCTRL¼ü£¬Ôò×Ô¶¯´´½¨ĞÂµÄ¹ıÂËÆ÷
+            // å¦‚æœæœ‰æœç´¢ç»“æœï¼Œå¹¶ä¸”æŒ‰ä½äº†CTRLé”®ï¼Œåˆ™è‡ªåŠ¨åˆ›å»ºæ–°çš„è¿‡æ»¤å™¨
             if(::GetAsyncKeyState(VK_CONTROL) & 0x8000) {
-                // µ±Ç°Ñ¡ÔñµÄÁĞ£¨¾ø¶ÔË÷Òı£©
+                // å½“å‰é€‰æ‹©çš„åˆ—ï¼ˆç»å¯¹ç´¢å¼•ï¼‰
                 int col = (int)_cbo_search_filter->get_cur_data();
                 if(col == -1) {
-                    msgbox(L"ĞÂ½¨¹ıÂËÆ÷²»ÄÜÖ¸¶¨Îª <È«²¿> ÁĞ¡£", MB_ICONINFORMATION);
+                    msgbox(L"æ–°å»ºè¿‡æ»¤å™¨ä¸èƒ½æŒ‡å®šä¸º <å…¨éƒ¨> åˆ—ã€‚", MB_ICONINFORMATION);
                 }
                 else {
                     auto& c         = _columns.showing(col);
@@ -416,7 +416,7 @@ bool MainWindow::filter_special_key(int vk)
                     auto& colname   = c.name;
                     auto& value     = _searcher.s();
                     auto p = new EventContainer(_searcher.s(), c.index, colname, -1, L"", value, true);
-                    // °´ÏÂÁË Shift ¼ü£¿°´ÏÂÔòÊÇ¹Ì¶¨Ìí¼Ó£¬·ñÔòÊÇÁÙÊ±Ìí¼Ó
+                    // æŒ‰ä¸‹äº† Shift é”®ï¼ŸæŒ‰ä¸‹åˆ™æ˜¯å›ºå®šæ·»åŠ ï¼Œå¦åˆ™æ˜¯ä¸´æ—¶æ·»åŠ 
                     p->is_tmp = !(::GetAsyncKeyState(VK_SHIFT) & 0x8000);
                     g_evtsys.trigger(L"filter:new", p);
                     g_evtsys.trigger(L"filter:set", p);
@@ -475,7 +475,7 @@ bool MainWindow::_start()
     for (auto& mod : _modules) {
         if (mod->enable) {
             if (!_controller.enable(mod->guid, true, mod->level)) {
-                msgbox(taowin::last_error(), MB_ICONERROR, L"ÎŞ·¨¿ªÆôÄ£¿é£º" + mod->name);
+                msgbox(taowin::last_error(), MB_ICONERROR, L"æ— æ³•å¼€å¯æ¨¡å—ï¼š" + mod->name);
             }
             else {
                 opend++;
@@ -484,7 +484,7 @@ bool MainWindow::_start()
     }
 
     if (opend == 0) {
-        msgbox(L"Ã»ÓĞÄ£¿é»òÃ»ÓĞÄ£¿é¿ªÆô¼ÇÂ¼¡£", MB_ICONEXCLAMATION);
+        msgbox(L"æ²¡æœ‰æ¨¡å—æˆ–æ²¡æœ‰æ¨¡å—å¼€å¯è®°å½•ã€‚", MB_ICONEXCLAMATION);
         _controller.stop();
         _consumer.stop();
         return false;
@@ -524,8 +524,8 @@ void MainWindow::_init_control_events()
     _listview->on_header_divider_dblclick(on_drag_column);
     _listview->on_header_end_track(on_drag_column);
     _listview->on_header_end_drag([this] {
-        // ÕæÕıµÄ½á¹ûÒªµÈµ½´Ëº¯Êı·µ»ØÖ®ºó²ÅÄÜ
-        // ÄÃµÃµ½£¬ËùÒÔÒì²½µ÷ÓÃ
+        // çœŸæ­£çš„ç»“æœè¦ç­‰åˆ°æ­¤å‡½æ•°è¿”å›ä¹‹åæ‰èƒ½
+        // æ‹¿å¾—åˆ°ï¼Œæ‰€ä»¥å¼‚æ­¥è°ƒç”¨
         async_call([&] {
             _on_drop_column();
         });
@@ -535,7 +535,7 @@ void MainWindow::_init_control_events()
 
 void MainWindow::_init_listview()
 {
-    // ±íÍ·À¸
+    // è¡¨å¤´æ 
     if(_config.has_arr("columns")) {
         auto add_col = [&](json11::Json jsoncol) {
             auto& c = JsonWrapper(jsoncol).as_obj();
@@ -554,18 +554,18 @@ void MainWindow::_init_listview()
         }
     }
     else {
-        _columns.push(L"±àºÅ", false,  50, "id"   );
-        _columns.push(L"Ê±¼ä", true,   86, "time" );
-        _columns.push(L"½ø³Ì", false,  50, "pid"  );
-        _columns.push(L"Ïß³Ì", false,  50, "tid"  );
-        _columns.push(L"Ä£¿é", true,  100, "proj" );
-        _columns.push(L"ÎÄ¼ş", true,  140, "file" );
-        _columns.push(L"º¯Êı", true,  100, "func" );
-        _columns.push(L"ĞĞºÅ", true,   50, "line" );
-        _columns.push(L"µÈ¼¶", false, 100, "level");
-        _columns.push(L"ÈÕÖ¾", true,  300, "log"  );
+        _columns.push(L"ç¼–å·", false,  50, "id"   );
+        _columns.push(L"æ—¶é—´", true,   86, "time" );
+        _columns.push(L"è¿›ç¨‹", false,  50, "pid"  );
+        _columns.push(L"çº¿ç¨‹", false,  50, "tid"  );
+        _columns.push(L"æ¨¡å—", true,  100, "proj" );
+        _columns.push(L"æ–‡ä»¶", true,  140, "file" );
+        _columns.push(L"å‡½æ•°", true,  100, "func" );
+        _columns.push(L"è¡Œå·", true,   50, "line" );
+        _columns.push(L"ç­‰çº§", false, 100, "level");
+        _columns.push(L"æ—¥å¿—", true,  300, "log"  );
 
-        // ³õ´ÎÊ¹ÓÃÊ±³õÊ¼»¯ÅäÖÃÎÄ¼ş
+        // åˆæ¬¡ä½¿ç”¨æ—¶åˆå§‹åŒ–é…ç½®æ–‡ä»¶
         if(!_config.has_arr("columns")) {
             auto& columns = _config.arr("columns").as_arr();
 
@@ -582,7 +582,7 @@ void MainWindow::_init_listview()
         }
     }
 
-    // µÚÒ»ÁĞÊ¼ÖÕÏÔÊ¾
+    // ç¬¬ä¸€åˆ—å§‹ç»ˆæ˜¾ç¤º
     _columns[0].valid = true;
     _columns[0].show = true;
 
@@ -602,7 +602,7 @@ void MainWindow::_init_listview()
         _listview->set_column_order((int)orders.size(), o.get());
     }
 
-    // ÁĞ±íÑÕÉ«À¸
+    // åˆ—è¡¨é¢œè‰²æ 
     JsonWrapper config_listview = _config.obj("listview");
     if(config_listview.has_arr("colors")) {
         for(auto& color : config_listview.arr("colors").as_arr()) {
@@ -645,27 +645,27 @@ void MainWindow::_init_listview()
         }
     }
 
-    // ListView ²Ëµ¥
+    // ListView èœå•
     std::wstring menustr = LR"(<MenuTree id="lv">
-        <item id="clear" text="Çå¿Õ" />
+        <item id="clear" text="æ¸…ç©º" />
         <sep />
-        <item id="copy" text="¸´ÖÆ" />
+        <item id="copy" text="å¤åˆ¶" />
         <sep />
     )";
 
     if(isetw()) {
-        menustr += LR"(<popup id="projects" text="Ä£¿é"></popup>)";
+        menustr += LR"(<popup id="projects" text="æ¨¡å—"></popup>)";
     }
 
     menustr += LR"(
-        <popup id="filters" text="¹ıÂËÆ÷"></popup>
+        <popup id="filters" text="è¿‡æ»¤å™¨"></popup>
         <sep />
-        <item id="top" text="¶¥²¿" />
-        <item id="bot" text="µ×²¿" />
-        <item id="toall" text="×ªµ½ <È«²¿>" />
+        <item id="top" text="é¡¶éƒ¨" />
+        <item id="bot" text="åº•éƒ¨" />
+        <item id="toall" text="è½¬åˆ° <å…¨éƒ¨>" />
         <sep />
-        <item id="full" text="×î´ó»¯" />
-        <item id="column" text="Ñ¡ÔñÁĞ" />
+        <item id="full" text="æœ€å¤§åŒ–" />
+        <item id="column" text="é€‰æ‹©åˆ—" />
     )";
 
     menustr += LR"(</MenuTree>)";
@@ -685,7 +685,7 @@ void MainWindow::_init_config()
     // main window config
     _config = windows.obj("main");
 
-    // ´°¿Ú±êÌâ
+    // çª—å£æ ‡é¢˜
     {
         std::wstring tt(L"Log Viewer");
         if(_config.has_str("title")) {
@@ -695,7 +695,7 @@ void MainWindow::_init_config()
         ::SetWindowText(_hwnd, tt.c_str());
     }
 
-    // ´°¿ÚÖÃ¶¥Óë·ñ
+    // çª—å£ç½®é¡¶ä¸å¦
     _set_top_most(_config["topmost"].bool_value());
 }
 
@@ -711,12 +711,12 @@ void MainWindow::_init_projects()
                     _projects[m] = EventPair();
                 }
                 else {
-                    msgbox(L"ÎŞĞ§Ä£¿éÅäÖÃ¡£", MB_ICONERROR);
+                    msgbox(L"æ— æ•ˆæ¨¡å—é…ç½®ã€‚", MB_ICONERROR);
                 }
             }
         }
 
-        // ÕâÑùµÄ»°£¬µ±Ç°¹ıÂËÆ÷¾ÍÒ»Ö±²»Îª¿ÕÁË£¬ÉÙ×÷Ğ©ÅĞ¶Ï
+        // è¿™æ ·çš„è¯ï¼Œå½“å‰è¿‡æ»¤å™¨å°±ä¸€ç›´ä¸ä¸ºç©ºäº†ï¼Œå°‘ä½œäº›åˆ¤æ–­
         _projects[nullptr] = EventPair();
     }
     else {
@@ -794,7 +794,7 @@ void MainWindow::_init_filters()
                         }
                     }
                     catch(const std::wstring& err) {
-                        msgbox(err, MB_ICONERROR, L"ÎŞ·¨¹¹Ôì¹ıÂËÆ÷");
+                        msgbox(err, MB_ICONERROR, L"æ— æ³•æ„é€ è¿‡æ»¤å™¨");
                     }
                 }
             }
@@ -804,22 +804,22 @@ void MainWindow::_init_filters()
 
 void MainWindow::_init_menus()
 {
-    // Ö÷²Ëµ¥
+    // ä¸»èœå•
     if(isdbg()) {
         _main_menu = taowin::PopupMenu::create(LR"(
 <MenuTree id="main">
-    <item id="clear"         text="Çå¿ÕÈÕÖ¾" />
-    <item id="filter"        text="½á¹û¹ıÂË" />
+    <item id="clear"         text="æ¸…ç©ºæ—¥å¿—" />
+    <item id="filter"        text="ç»“æœè¿‡æ»¤" />
 </MenuTree>
 )", true);
     }
     else {
         _main_menu = taowin::PopupMenu::create(LR"(
 <MenuTree id="main">
-    <item id="start"         text="¿ªÆôÈÕÖ¾" />
-    <item id="clear"         text="Çå¿ÕÈÕÖ¾" />
-    <item id="module"        text="Ä£¿é¹ÜÀí" />
-    <item id="filter"        text="½á¹û¹ıÂË" />
+    <item id="start"         text="å¼€å¯æ—¥å¿—" />
+    <item id="clear"         text="æ¸…ç©ºæ—¥å¿—" />
+    <item id="module"        text="æ¨¡å—ç®¡ç†" />
+    <item id="filter"        text="ç»“æœè¿‡æ»¤" />
 </MenuTree>
 )", true);
     }
@@ -829,29 +829,29 @@ void MainWindow::_init_menus()
     ::SetMenu(*this, _main_menu->get_handle());
 
 
-    // ¹¤¾ß²Ëµ¥
+    // å·¥å…·èœå•
     _tools_menu = taowin::PopupMenu::create(LR"(
 <MenuTree id="tools">
-    <item id="topmost"       text="´°¿ÚÖÃ¶¥" />
-    <item id="colors"        text="ÑÕÉ«ÅäÖÃ" />
+    <item id="topmost"       text="çª—å£ç½®é¡¶" />
+    <item id="colors"        text="é¢œè‰²é…ç½®" />
     <sep />
-    <item id="guid"          text="´´½¨ÈÕÖ¾ÊµÀı" />
-    <item id="export"        text="µ¼³öÈÕÖ¾" />
+    <item id="guid"          text="åˆ›å»ºæ—¥å¿—å®ä¾‹" />
+    <item id="export"        text="å¯¼å‡ºæ—¥å¿—" />
     <sep />
-    <item id="json_visual"   text="JSON ¿ÉÊÓ»¯" />
-    <item id="lua_console"   text="LUA ¿ØÖÆÌ¨" />
+    <item id="json_visual"   text="JSON å¯è§†åŒ–" />
+    <item id="lua_console"   text="LUA æ§åˆ¶å°" />
     <sep />
-    <item id="calc"          text="¼ÆËãÆ÷" />
-    <item id="notepad"       text="¼ÇÊÂ±¾" />
-    <item id="cmd"           text="ÃüÁîÌáÊ¾·û" />
-    <item id="regedit"       text="×¢²á±í" />
-    <item id="control"       text="¿ØÖÆÃæ°å" />
-    <item id="mstsc"         text="Ô¶³Ì×ÀÃæ" />
+    <item id="calc"          text="è®¡ç®—å™¨" />
+    <item id="notepad"       text="è®°äº‹æœ¬" />
+    <item id="cmd"           text="å‘½ä»¤æç¤ºç¬¦" />
+    <item id="regedit"       text="æ³¨å†Œè¡¨" />
+    <item id="control"       text="æ§åˆ¶é¢æ¿" />
+    <item id="mstsc"         text="è¿œç¨‹æ¡Œé¢" />
 </MenuTree>
 )", false);
     add_menu(_tools_menu);
 
-    // ×Ô¶¨Òå¹¤¾ß
+    // è‡ªå®šä¹‰å·¥å…·
     const auto& tools = g_config->arr("tools").as_arr();
     if(!tools.empty()) {
         _tools_menu->insert_sep(L"", L"");
@@ -872,7 +872,7 @@ void MainWindow::_init_filter_events()
         _cbo_sel_flt->reload(true);
     });
 
-    // ÏÈ·ÅÕâÀï°É¡­¡­
+    // å…ˆæ”¾è¿™é‡Œå§â€¦â€¦
     _event_source.SetColConv([this](int i) {
         return _columns.showing(i).index;
     });
@@ -973,7 +973,7 @@ void MainWindow::_manage_modules()
 void MainWindow::_show_filters()
 {
     if(isetw() && !_current_project) {
-        msgbox(L"Ã»ÓĞÄ£¿é¿ÉÓÃ£¨Ôö¼Ó»òÑ¡ÔñÄ£¿é£©¡£", MB_ICONEXCLAMATION);
+        msgbox(L"æ²¡æœ‰æ¨¡å—å¯ç”¨ï¼ˆå¢åŠ æˆ–é€‰æ‹©æ¨¡å—ï¼‰ã€‚", MB_ICONEXCLAMATION);
         return;
     }
 
@@ -1001,8 +1001,8 @@ void MainWindow::_show_filters()
             auto& v = *values;
             for(auto& m : _modules) {
                 // if(m->enable) {
-                    // Õâ¸öË÷ÒıÃ»Ê¹ÓÃ
-                    // ±È½ÏµÄÊÇ value_name Ö±½ÓÏàµÈ
+                    // è¿™ä¸ªç´¢å¼•æ²¡ä½¿ç”¨
+                    // æ¯”è¾ƒçš„æ˜¯ value_name ç›´æ¥ç›¸ç­‰
                     values->emplace_back((int)m, m->name.c_str());
                 // }
             }
@@ -1036,7 +1036,7 @@ bool MainWindow::_do_search(bool first)
         auto s = _edt_search->get_text();
         if(s.empty()) { return false; }
 
-        // ËÑË÷ÄÄÒ»ÁĞ£º-1£ºÈ«²¿
+        // æœç´¢å“ªä¸€åˆ—ï¼š-1ï¼šå…¨éƒ¨
         std::vector<int> cols;
         int col = (int)_cbo_search_filter->get_cur_data();
         if(col == -1) {
@@ -1048,33 +1048,33 @@ bool MainWindow::_do_search(bool first)
             cols.emplace_back(_columns.showing(col).index);
         }
 
-        // ÖØÖÃËÑË÷ÒıÇæ²ÎÊı
+        // é‡ç½®æœç´¢å¼•æ“å‚æ•°
         try {
             _searcher.reset(_current_filter, cols, s);
         }
         catch(const std::wstring& err) {
-            msgbox(err, MB_ICONERROR, L"´íÎó");
+            msgbox(err, MB_ICONERROR, L"é”™è¯¯");
             return false;
         }
     }
 
-    // ÊÇÏòÇ°»¹ÊÇÏòºóËÑË÷
+    // æ˜¯å‘å‰è¿˜æ˜¯å‘åæœç´¢
     bool forward = !(::GetAsyncKeyState(VK_SHIFT) & 0x8000 && _searcher.last() != -1);
 
-    // Ö´ĞĞËÑË÷
+    // æ‰§è¡Œæœç´¢
     int last = _searcher.last();
     int next;
     try {
         next = _searcher.next(forward);
     }
     catch(const std::wstring& err) {
-        msgbox(err, MB_ICONERROR, L"´íÎó");
+        msgbox(err, MB_ICONERROR, L"é”™è¯¯");
         return false;
     }
 
-    DBG(L"ËÑË÷½á¹ûÁĞ: %d", next);
+    DBG(L"æœç´¢ç»“æœåˆ—: %d", next);
     if (next == -1) {
-        msgbox(std::wstring(L"Ã»ÓĞ") + (forward ? L"ÏÂ" : L"ÉÏ") + L"Ò»¸öÁË¡£", MB_ICONINFORMATION);
+        msgbox(std::wstring(L"æ²¡æœ‰") + (forward ? L"ä¸‹" : L"ä¸Š") + L"ä¸€ä¸ªäº†ã€‚", MB_ICONINFORMATION);
         _listview->focus();
         return false;
     }
@@ -1090,20 +1090,20 @@ bool MainWindow::_do_search(bool first)
 void MainWindow::_clear_results()
 {
     if(_results_exporting.count(_current_project) && _results_exporting[_current_project]) {
-        msgbox(L"µ±Ç°Ä£¿éµÄÈÕÖ¾ÕıÔÚ±»µ¼³ö£¬²»ÄÜ±»Çå¿Õ£¬ÇëÉÔºòÔÙÊÔ¡£", MB_ICONEXCLAMATION);
+        msgbox(L"å½“å‰æ¨¡å—çš„æ—¥å¿—æ­£åœ¨è¢«å¯¼å‡ºï¼Œä¸èƒ½è¢«æ¸…ç©ºï¼Œè¯·ç¨å€™å†è¯•ã€‚", MB_ICONEXCLAMATION);
         return;
     }
 
-    // ĞèÒªÏÈ¹Ø±ÕÒıÓÃÁËÈÕÖ¾¼ÇÂ¼µÄÄ³Ä³Ğ©£¨ÒòÎªµ±Ç°µÄÈÕÖ¾¼ÇÂ¼Ã»ÓĞÒıÓÃ¼ÆÊı¹¦ÄÜ£©
+    // éœ€è¦å…ˆå…³é—­å¼•ç”¨äº†æ—¥å¿—è®°å½•çš„æŸæŸäº›ï¼ˆå› ä¸ºå½“å‰çš„æ—¥å¿—è®°å½•æ²¡æœ‰å¼•ç”¨è®¡æ•°åŠŸèƒ½ï¼‰
 
-    // °üÀ¨£º²é¿´ÏêÇé´°¿Ú
-    // µ«ËüÄ¿Ç°²»»áĞŞ¸ÄÊÂ¼ş¼ÇÂ¼£¨½ö³õÊ¼»¯Ê¹ÓÃ£¬ËùÒÔÏÈ²»¹ÜËü£©
+    // åŒ…æ‹¬ï¼šæŸ¥çœ‹è¯¦æƒ…çª—å£
+    // ä½†å®ƒç›®å‰ä¸ä¼šä¿®æ”¹äº‹ä»¶è®°å½•ï¼ˆä»…åˆå§‹åŒ–ä½¿ç”¨ï¼Œæ‰€ä»¥å…ˆä¸ç®¡å®ƒï¼‰
 
-    // ¸÷ÊÂ¼ş¹ıÂËÆ÷Ó¦¸ÃÇå¿ÕÁË£¨ËüÃÇÖ»ÊÇÒıÓÃ£©
+    // å„äº‹ä»¶è¿‡æ»¤å™¨åº”è¯¥æ¸…ç©ºäº†ï¼ˆå®ƒä»¬åªæ˜¯å¼•ç”¨ï¼‰
     for (auto& f : *_filters)
         f->clear();
 
-    // Ö÷ÊÂ¼şÓµÓĞÈÕÖ¾ÊÂ¼ş£¬ÓÉËüÉ¾³ı
+    // ä¸»äº‹ä»¶æ‹¥æœ‰æ—¥å¿—äº‹ä»¶ï¼Œç”±å®ƒåˆ é™¤
     for(auto& e : _events->events()) {
         e->~LogDataUI();
         _log_pool.destroy(e);
@@ -1111,7 +1111,7 @@ void MainWindow::_clear_results()
 
     _events->clear();
 
-    // ¸üĞÂ½çÃæ
+    // æ›´æ–°ç•Œé¢
     _listview->update_source();
 }
 
@@ -1120,11 +1120,11 @@ void MainWindow::_set_top_most(bool top)
     ::SetWindowPos(_hwnd, top ? HWND_TOPMOST : HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 }
 
-// Ö÷½çÃæËÑË÷À¸
+// ä¸»ç•Œé¢æœç´¢æ 
 void MainWindow::_update_search_filter()
 {
-    // ±£Áôµ±Ç°Ñ¡ÖĞµÄÏî£¨Èç¹ûÓĞµÄ»°£©
-    // ±£´æµÄÊÇÕæÊµË÷Òı
+    // ä¿ç•™å½“å‰é€‰ä¸­çš„é¡¹ï¼ˆå¦‚æœæœ‰çš„è¯ï¼‰
+    // ä¿å­˜çš„æ˜¯çœŸå®ç´¢å¼•
     int cur_real_index = -1;
 
     if (_cbo_search_filter->get_cur_sel() != -1) {
@@ -1134,13 +1134,13 @@ void MainWindow::_update_search_filter()
         }
     }
 
-    // ÖØÖÃÄÚÈİ
+    // é‡ç½®å†…å®¹
     _cbo_search_filter->clear();
-    _cbo_search_filter->add_string(L"È«²¿", (void*)-1);
+    _cbo_search_filter->add_string(L"å…¨éƒ¨", (void*)-1);
 
-    std::vector<const wchar_t*> strs {L"È«²¿"};
+    std::vector<const wchar_t*> strs {L"å…¨éƒ¨"};
 
-    // Ö»Ìí¼ÓÒÑ¾­ÏÔÊ¾µÄÁĞ
+    // åªæ·»åŠ å·²ç»æ˜¾ç¤ºçš„åˆ—
     int new_cur = 0;
     _columns.for_each(ColumnManager::ColumnFlags::Showing, [&](int i, Column& c) {
         _cbo_search_filter->add_string(c.name.c_str(), (void*)i);
@@ -1154,7 +1154,7 @@ void MainWindow::_update_search_filter()
         new_cur = _cbo_search_filter->get_count() - 1;
     }
 
-    // ±£³ÖÑ¡ÖĞÔ­À´µÄÏî
+    // ä¿æŒé€‰ä¸­åŸæ¥çš„é¡¹
     _cbo_search_filter->set_cur_sel(new_cur);
 }
 
@@ -1283,7 +1283,7 @@ LR"(
         void done()
         {
             _done = true;
-            msgbox(L"µ¼³ö³É¹¦¡£", MB_ICONINFORMATION);
+            msgbox(L"å¯¼å‡ºæˆåŠŸã€‚", MB_ICONINFORMATION);
             close();
         }
 
@@ -1291,8 +1291,8 @@ LR"(
         {
             _done = false;
             auto lbl = _root->find<taowin::Label>(L"progress");
-            lbl->set_text(L"Ê§°Ü£¡");
-            msgbox(L"µ¼³öÊ§°Ü£¡", MB_ICONERROR);
+            lbl->set_text(L"å¤±è´¥ï¼");
+            msgbox(L"å¯¼å‡ºå¤±è´¥ï¼", MB_ICONERROR);
             close(1);
         }
 
@@ -1307,9 +1307,9 @@ LR"(
         virtual LPCTSTR get_skin_xml() const override
         {
             LPCTSTR json = LR"tw(
-                <Window title="ÕıÔÚµ¼³öÈÕÖ¾..." size="250,100">
+                <Window title="æ­£åœ¨å¯¼å‡ºæ—¥å¿—..." size="250,100">
                     <Resource>
-                        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
+                        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
                     </Resource>
                     <Root>
                         <Vertical padding="5,5,5,5">
@@ -1318,7 +1318,7 @@ LR"(
                                 <Horizontal>
                                     <Control />
                                     <Horizontal width="100">
-                                        <Label text="½ø¶È£º" width="40" />
+                                        <Label text="è¿›åº¦ï¼š" width="40" />
                                         <Label name="progress" />
                                     </Horizontal>
                                     <Control />
@@ -1364,7 +1364,7 @@ LR"(
         buf[0] = L'\0';
         ofn.lpstrFile = buf;
         ofn.nMaxFile = _countof(buf);
-        ofn.lpstrFilter = L"Ò³ÃæÎÄ¼ş£¨*.html£©\0*.html\0";
+        ofn.lpstrFilter = L"é¡µé¢æ–‡ä»¶ï¼ˆ*.htmlï¼‰\0*.html\0";
         ofn.lpstrDefExt = L"html";
 
         GetSaveFileName(&ofn);
@@ -1375,8 +1375,8 @@ LR"(
         return;
     }
 
-    // std::vector ÔÚÀ©ÈİºóÖ¸ÕëÊı×é»á±äÎŞĞ§
-    // ËùÒÔÕâÀïÖ±½Ó¸´ÖÆÖ¸Õë£¨²¢È·±£´ËÊ±²»ÄÜÇå¿ÕÈÕÖ¾£©
+    // std::vector åœ¨æ‰©å®¹åæŒ‡é’ˆæ•°ç»„ä¼šå˜æ— æ•ˆ
+    // æ‰€ä»¥è¿™é‡Œç›´æ¥å¤åˆ¶æŒ‡é’ˆï¼ˆå¹¶ç¡®ä¿æ­¤æ—¶ä¸èƒ½æ¸…ç©ºæ—¥å¿—ï¼‰
     auto n = _current_filter->size();
     auto logs = new LogDataUIPtr[n];
     auto src = reinterpret_cast<LogDataUIPtr*>(&_current_filter->events()[0]);
@@ -1389,7 +1389,7 @@ LR"(
 
     auto task = new ExportResult(_current_project, logs, n, file);
 
-    // TODO ·Ñ½â£¬ÕâÀïÎªÊ²Ã´Òª°´Öµ´«
+    // TODO è´¹è§£ï¼Œè¿™é‡Œä¸ºä»€ä¹ˆè¦æŒ‰å€¼ä¼ 
     task->ondone([&, dlg](ModuleEntry* m, int ret) {
         if(ret == 0)
             dlg->done();
@@ -1412,7 +1412,7 @@ void MainWindow::_copy_selected_item()
 {
     int i = _listview->get_next_item(-1, LVNI_SELECTED);
     if(i != -1) {
-        // TODO Õâ¸ö´úÂëÓë²é¿´ÏêÏ¸Ê±µÄ´úÂëÊÇÖØ¸´µÄ
+        // TODO è¿™ä¸ªä»£ç ä¸æŸ¥çœ‹è¯¦ç»†æ—¶çš„ä»£ç æ˜¯é‡å¤çš„
         auto get_column_name = [&](int i) {
             return i >= 0 && i <= (int)_columns.size()
                 ? _columns[i].name.c_str()
@@ -1487,11 +1487,11 @@ LRESULT MainWindow::_on_create()
 
     g_evtsys.trigger(L"project:set", isetw() && !_modules.empty() ? _modules[0] : nullptr, true);
 
-    _level_maps.try_emplace(TRACE_LEVEL_VERBOSE,     L"Verbose",      L"ÏêÏ¸(Verbose)"    );
-    _level_maps.try_emplace(TRACE_LEVEL_INFORMATION, L"Information",  L"ĞÅÏ¢(Information)");
-    _level_maps.try_emplace(TRACE_LEVEL_WARNING,     L"Warning",      L"¾¯¸æ(Warning)"    );
-    _level_maps.try_emplace(TRACE_LEVEL_ERROR,       L"Error",        L"´íÎó(Error)"      );
-    _level_maps.try_emplace(TRACE_LEVEL_CRITICAL,    L"Critical",     L"ÑÏÖØ(Critical)"   );
+    _level_maps.try_emplace(TRACE_LEVEL_VERBOSE,     L"Verbose",      L"è¯¦ç»†(Verbose)"    );
+    _level_maps.try_emplace(TRACE_LEVEL_INFORMATION, L"Information",  L"ä¿¡æ¯(Information)");
+    _level_maps.try_emplace(TRACE_LEVEL_WARNING,     L"Warning",      L"è­¦å‘Š(Warning)"    );
+    _level_maps.try_emplace(TRACE_LEVEL_ERROR,       L"Error",        L"é”™è¯¯(Error)"      );
+    _level_maps.try_emplace(TRACE_LEVEL_CRITICAL,    L"Critical",     L"ä¸¥é‡(Critical)"   );
 
     _update_search_filter();
 
@@ -1515,8 +1515,8 @@ LRESULT MainWindow::_on_create()
                 auto& v = *values;
                 auto& c = _columns.avail(idx);
 
-                // Èç¹ûÊÇ¹ıÂËÈÕÖ¾µÄ»°£¬ÔòÌí¼ÓÒÑ±¸·İ
-                // µÄ¹ıÂËÆ÷¹æÔòµ½ºòÑ¡ÁĞ±í¹©Ñ¡Ôñ
+                // å¦‚æœæ˜¯è¿‡æ»¤æ—¥å¿—çš„è¯ï¼Œåˆ™æ·»åŠ å·²å¤‡ä»½
+                // çš„è¿‡æ»¤å™¨è§„åˆ™åˆ°å€™é€‰åˆ—è¡¨ä¾›é€‰æ‹©
                 if(c.id == "log") {
                     filters_added.clear();
                     for(auto fit = _filters->crbegin(), end = _filters->crend(); fit != end; ++fit) {
@@ -1562,7 +1562,7 @@ LRESULT MainWindow::_on_create()
             {
                 auto& c = _columns.avail(field_index);
 
-                // Ñ¡ÔñÁËÒÑ¾­´æÔÚµÄ¹ıÂËÆ÷
+                // é€‰æ‹©äº†å·²ç»å­˜åœ¨çš„è¿‡æ»¤å™¨
                 if(c.id == "log" && value_index != -1) {
                     auto f = reinterpret_cast<EventContainer*>(value_index);
                     async_call([f] { g_evtsys.trigger(L"filter:set", f); });
@@ -1597,7 +1597,7 @@ LRESULT MainWindow::_on_create()
             }))
             {
                 async_call([&]() {
-                    msgbox(L"ÎŞ·¨Æô¶¯ DebugView ÈÕÖ¾£¬µ±Ç°¿ÉÄÜÓĞÆäËüµÄ DebugView ÈÕÖ¾²é¿´Æ÷ÕıÔÚÔËĞĞ¡£", MB_ICONINFORMATION);
+                    msgbox(L"æ— æ³•å¯åŠ¨ DebugView æ—¥å¿—ï¼Œå½“å‰å¯èƒ½æœ‰å…¶å®ƒçš„ DebugView æ—¥å¿—æŸ¥çœ‹å™¨æ­£åœ¨è¿è¡Œã€‚", MB_ICONINFORMATION);
                     close();
                 });
             }
@@ -1612,11 +1612,11 @@ LRESULT MainWindow::_on_create()
 LRESULT MainWindow::_on_close()
 {
     if(!_results_exporting.empty()) {
-        msgbox(L"Ä¿Ç°ÉĞÓĞÈÕÖ¾ÕıÔÚ±»µ¼³ö£¬´°¿Ú²»ÄÜ±»¹Ø±Õ¡£", MB_ICONEXCLAMATION);
+        msgbox(L"ç›®å‰å°šæœ‰æ—¥å¿—æ­£åœ¨è¢«å¯¼å‡ºï¼Œçª—å£ä¸èƒ½è¢«å…³é—­ã€‚", MB_ICONEXCLAMATION);
         return 0;
     }
 
-    if(_current_filter->size() && msgbox(L"È·¶¨¹Ø±Õ´°¿Ú£¿", MB_ICONQUESTION | MB_OKCANCEL) == IDCANCEL) {
+    if(_current_filter->size() && msgbox(L"ç¡®å®šå…³é—­çª—å£ï¼Ÿ", MB_ICONQUESTION | MB_OKCANCEL) == IDCANCEL) {
         return 0;
     }
 
@@ -1655,13 +1655,13 @@ LRESULT MainWindow::_on_log(LoggerMessage::Value msg, LPARAM lParam)
         ModuleEntry* m = isetw() ? _module_from_guid(item->guid) : nullptr;
 
         if(isetw()) {
-            // ÏîÄ¿Ãû³Æ & ÏîÄ¿¸ùÄ¿Â¼
+            // é¡¹ç›®åç§° & é¡¹ç›®æ ¹ç›®å½•
             static std::wstring unknown_project(L"<unknown>");
             item->strProject = m ? &m->name : &unknown_project;
 
             const std::wstring* root = m ? &m->root : nullptr;
 
-            // Ïà¶ÔÂ·¾¶
+            // ç›¸å¯¹è·¯å¾„
             item->offset_of_file = 0;
             if(*item->file && root) {
                 if(::_wcsnicmp(item->file, root->c_str(), root->size()) == 0) {
@@ -1677,22 +1677,22 @@ LRESULT MainWindow::_on_log(LoggerMessage::Value msg, LPARAM lParam)
         auto& events = pair.first;
         auto& filters = pair.second;
 
-        // ÈÕÖ¾±àºÅ
+        // æ—¥å¿—ç¼–å·
         _snwprintf(item->id, _countof(item->id), L"%llu", (unsigned long long)events.size() + 1);
 
-        // ×Ö·û´®ĞÎÊ½µÄÈÕÖ¾µÈ¼¶
+        // å­—ç¬¦ä¸²å½¢å¼çš„æ—¥å¿—ç­‰çº§
         item->strLevel = &_level_maps[item->level].cmt1;
 
         //////////////////////////////////////////////////////////////////////////
 
-        // ÅĞ¶ÏÒ»ÏÂµ±Ç°¹ıÂËÆ÷ÊÇ·ñÌí¼ÓÁË´ËÊÂ¼ş
-        // Èç¹ûÃ»ÓĞÌí¼Ó£¬¾Í²»±ØÒªË¢ĞÂÁĞ±í¿Ø¼şÁË
+        // åˆ¤æ–­ä¸€ä¸‹å½“å‰è¿‡æ»¤å™¨æ˜¯å¦æ·»åŠ äº†æ­¤äº‹ä»¶
+        // å¦‚æœæ²¡æœ‰æ·»åŠ ï¼Œå°±ä¸å¿…è¦åˆ·æ–°åˆ—è¡¨æ§ä»¶äº†
         auto old_size = _current_filter->size();
 
-        // È«²¿ÊÂ¼şÈİÆ÷
+        // å…¨éƒ¨äº‹ä»¶å®¹å™¨
         events.add(item);
 
-        // ´ø¹ıÂËµÄÊÂ¼şÈİÆ÷£¨Ö¸Õë¸´ÓÃ£©
+        // å¸¦è¿‡æ»¤çš„äº‹ä»¶å®¹å™¨ï¼ˆæŒ‡é’ˆå¤ç”¨ï¼‰
         if(!filters.empty()) {
             for(auto& f : filters) {
                 if(!f->is_lua()) {
@@ -1703,7 +1703,7 @@ LRESULT MainWindow::_on_log(LoggerMessage::Value msg, LPARAM lParam)
                         f->add(item);
                     }
                     catch(const std::wstring& err) {
-                        msgbox(err, MB_ICONERROR, L"Ö´ĞĞ½Å±¾Ê±´íÎó");
+                        msgbox(err, MB_ICONERROR, L"æ‰§è¡Œè„šæœ¬æ—¶é”™è¯¯");
                         f->enable_filter(false);
                     }
                 }
@@ -1711,7 +1711,7 @@ LRESULT MainWindow::_on_log(LoggerMessage::Value msg, LPARAM lParam)
         }
 
         if(_current_filter->size() > old_size) {
-            // Èç¹ûµ±Ç°ÄÚÈİÎª¿Õ»ò½¹µãĞĞÊÇ×îºóÒ»ĞĞ£¬Ôò×Ô¶¯¹öÆÁµ½×îºó
+            // å¦‚æœå½“å‰å†…å®¹ä¸ºç©ºæˆ–ç„¦ç‚¹è¡Œæ˜¯æœ€åä¸€è¡Œï¼Œåˆ™è‡ªåŠ¨æ»šå±åˆ°æœ€å
             int count = (int)_current_filter->size();
             int sic_flag = LVSICF_NOINVALIDATEALL | LVSICF_NOSCROLL;
             bool is_last_focused = count <= 1 || (_listview->get_item_state(count - 2, LVIS_FOCUSED) & LVIS_FOCUSED);
@@ -1828,7 +1828,7 @@ LRESULT MainWindow::_on_drag_column(NMHDR* hdr)
 
     HDITEM hdi;
     if(!nmhdr->pitem) {
-        // ½ö»ñÈ¡¿í¶È×Ö¶Î£¬²»ÒªÊ¹ÓÃÆäËüÖµ
+        // ä»…è·å–å®½åº¦å­—æ®µï¼Œä¸è¦ä½¿ç”¨å…¶å®ƒå€¼
         hdi.mask = HDI_WIDTH;
         Header_GetItem(hdr->hwndFrom, nmhdr->iItem, &hdi);
         nmhdr->pitem = &hdi;
@@ -1858,11 +1858,11 @@ LRESULT MainWindow::_on_drag_column(NMHDR* hdr)
     return 0;
 }
 
-// ÍÏ¶¯ÁĞ±íÍ·ºó¼Ç×¡±íÍ·ÁĞµÄË³Ğò
+// æ‹–åŠ¨åˆ—è¡¨å¤´åè®°ä½è¡¨å¤´åˆ—çš„é¡ºåº
 void MainWindow::_on_drop_column()
 {
-    // Ö»ÊÇµ±Ç°ÕæÕıµÄÁĞÊı£¨ÒòÎªÓĞĞ©¿ÉÄÜÒÑ¾­É¾³ı£©
-    // Õâ¸öÁĞÊı±ØÈ»Óë columns ÖĞ show(visible) µÄÊıÁ¿Ò»ÖÂ
+    // åªæ˜¯å½“å‰çœŸæ­£çš„åˆ—æ•°ï¼ˆå› ä¸ºæœ‰äº›å¯èƒ½å·²ç»åˆ é™¤ï¼‰
+    // è¿™ä¸ªåˆ—æ•°å¿…ç„¶ä¸ columns ä¸­ show(visible) çš„æ•°é‡ä¸€è‡´
     auto n = _listview->get_column_count();
     auto orders = std::make_unique<int[]>(n);
     if(_listview->get_column_order(n, orders.get())) {
@@ -1891,7 +1891,7 @@ LRESULT MainWindow::_on_init_popupmenu(HMENU hPopup)
     if (sib = _lvmenu->match_popup(L"filters", hPopup)){
         sib->clear();
         
-        sib->insert_str(L"", std::to_wstring((int)_events), L"È«²¿", true, L"", false);
+        sib->insert_str(L"", std::to_wstring((int)_events), L"å…¨éƒ¨", true, L"", false);
 
         if(!_filters->empty()) sib->insert_sep(L"", L"");
 

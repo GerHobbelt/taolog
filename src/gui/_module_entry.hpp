@@ -28,10 +28,10 @@ struct ModuleEntry
 
         str.reserve(1024);
 
-        str += L"名字\bw35：\bw{15}" + name + L"\bn";
-        str += L"GUID\bw35：\bw{15}" + guid_str + L"\bn";
-        str += L"目录\bw35：\bw{15}" + root + L"\bn";
-        str += L"等级\bw35：\bw{15}" + std::to_wstring(level) + L"\bn";
+        str += L"闈¤都\bw35銊‐bw{15}" + name + L"\bn";
+        str += L"GUID\bw35銊‐bw{15}" + guid_str + L"\bn";
+        str += L"閱寸抗\bw35銊‐bw{15}" + root + L"\bn";
+        str += L"鑴规挵\bw35銊‐bw{15}" + std::to_wstring(level) + L"\bn";
 
         return std::move(str);
     }

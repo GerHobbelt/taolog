@@ -16,10 +16,10 @@ void JsonVisual::get_metas(WindowMeta * metas)
 LPCTSTR JsonVisual::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="JSON ¿ÉÊÓ»¯" size="500,400">
+<Window title="JSON å¯è§†åŒ–" size="500,400">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="14" face="Î¢ÈíÑÅºÚ" size="14"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="14" face="å¾®è½¯é›…é»‘" size="14"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
@@ -27,7 +27,7 @@ LPCTSTR JsonVisual::get_skin_xml() const
             <Vertical name="nojson">
                 <Control/>
                 <Vertical height="60">
-                    <Label font="14" style="center,centerimage" text="¼ôÌù°åÖÐÃ»ÓÐÓÐÐ§µÄ JSON ×Ö·û´®¡£" />
+                    <Label font="14" style="center,centerimage" text="å‰ªè´´æ¿ä¸­æ²¡æœ‰æœ‰æ•ˆçš„ JSON å­—ç¬¦ä¸²ã€‚" />
                     <Label font="14" style="center,centerimage" name="err" />
                 </Vertical>
                 <Control/>

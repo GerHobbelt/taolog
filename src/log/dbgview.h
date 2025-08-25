@@ -29,7 +29,7 @@ public:
     { }
 
 public:
-    bool init(OnNotify notify); // notify µ÷ÓÃÓÚ·Ç init Ê±µÄÏß³Ì
+    bool init(OnNotify notify); // notify è°ƒç”¨äºé init æ—¶çš„çº¿ç¨‹
     void uninit();
 
 protected:
@@ -40,13 +40,13 @@ protected:
     OnNotify        _notify;
 
 protected:
-    HANDLE          _hThread;       // ½ÓÊÕÏß³Ì
-    HANDLE          _hMutex;        // OutputDebugString »¥³âÌå
-    HANDLE          _hFile;         // ¹²ÏíÄÚ´æ
-    HANDLE          _hEvtBufReady;  // ¹²ÏíÄÚ´æÏĞÖÃ
-    HANDLE          _hEvtDataReady; // Êı¾İ±¸Í×
-    HANDLE          _hEvtExit;      // ÍË³öÊÂ¼ş
-    DbWinBuffer*    _pLog;          // ¹²ÏíÄÚ´æÓ³Éä
+    HANDLE          _hThread;       // æ¥æ”¶çº¿ç¨‹
+    HANDLE          _hMutex;        // OutputDebugString äº’æ–¥ä½“
+    HANDLE          _hFile;         // å…±äº«å†…å­˜
+    HANDLE          _hEvtBufReady;  // å…±äº«å†…å­˜é—²ç½®
+    HANDLE          _hEvtDataReady; // æ•°æ®å¤‡å¦¥
+    HANDLE          _hEvtExit;      // é€€å‡ºäº‹ä»¶
+    DbWinBuffer*    _pLog;          // å…±äº«å†…å­˜æ˜ å°„
 };
 
 }

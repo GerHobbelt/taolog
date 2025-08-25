@@ -35,7 +35,7 @@ public:
             case 0: value = flt.name.c_str();  break;
             case 1: value = flt.field_name.c_str();  break;
             case 2: value = !flt.value_input.empty() ? flt.value_input.c_str() : flt.value_name.c_str(); break;
-            case 3: value = flt.is_tmp ? L"ÊÇ" : L"·ñ";
+            case 3: value = flt.is_tmp ? L"æ˜¯" : L"å¦";
             }
 
             return value;
@@ -116,9 +116,9 @@ protected:
     taowin::TextBox*       _name;
     taowin::ComboBox*   _field_name;
     taowin::ComboBox*   _value_name;
-    taowin::ComboBox*   _value_name_1;  // ²»ÄÜ±à¼­µÄ
-    taowin::ComboBox*   _value_name_2;  // ÄÜ±à¼­µÄ
-    taowin::ComboBox*   _value_name_3;  // ÄÜ±à¼­¡¢×Ô»æµÄ
+    taowin::ComboBox*   _value_name_1;  // ä¸èƒ½ç¼–è¾‘çš„
+    taowin::ComboBox*   _value_name_2;  // èƒ½ç¼–è¾‘çš„
+    taowin::ComboBox*   _value_name_3;  // èƒ½ç¼–è¾‘ã€è‡ªç»˜çš„
     taowin::TextBox*       _value_input;
     taowin::Button*     _save;
     taowin::Button*     _cancel;

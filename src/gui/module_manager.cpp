@@ -23,27 +23,27 @@ void ModuleManager::get_metas(WindowMeta * metas)
 LPCTSTR ModuleManager::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="Ä£¿é¹ÜÀí" size="280,250">
+<Window title="æ¨¡å—ç®¡ç†" size="280,250">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="1" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="1" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
         <Horizontal padding="5,5,5,5">
             <ListView name="list" style="showselalways,ownerdata,tabstop" exstyle="clientedge" />
             <Vertical padding="5,5,5,5" width="50">
-                <Button name="enable" text="ÆôÓÃ" style="disabled,tabstop" height="24" />
+                <Button name="enable" text="å¯ç”¨" style="disabled,tabstop" height="24" />
                 <Control height="20" />
-                <Button name="add" text="Ìí¼Ó" height="24" style="tabstop" />
+                <Button name="add" text="æ·»åŠ " height="24" style="tabstop" />
                 <Control height="5" />
-                <Button name="modify" text="ĞŞ¸Ä" style="disabled,tabstop" height="24"/>
+                <Button name="modify" text="ä¿®æ”¹" style="disabled,tabstop" height="24"/>
                 <Control height="5" />
-                <Button name="delete" text="É¾³ı" style="disabled,tabstop" height="24"/>
+                <Button name="delete" text="åˆ é™¤" style="disabled,tabstop" height="24"/>
                 <Control height="20" />
-                <Button name="copy" text="¸´ÖÆ" style="disabled,tabstop" height="24"/>
+                <Button name="copy" text="å¤åˆ¶" style="disabled,tabstop" height="24"/>
                 <Control height="5" />
-                <Button name="paste" text="Õ³Ìù" style="disabled,tabstop" height="24"/>
+                <Button name="paste" text="ç²˜è´´" style="disabled,tabstop" height="24"/>
                 <Control height="5" />
             </Vertical>
         </Horizontal>
@@ -69,8 +69,8 @@ LRESULT ModuleManager::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
         _btn_copy   = _root->find<taowin::Button>(L"copy");
         _btn_paste  = _root->find<taowin::Button>(L"paste");
 
-        _listview->insert_column(L"Ãû×Ö", 150, 0);
-        _listview->insert_column(L"×´Ì¬", 50, 1);
+        _listview->insert_column(L"åå­—", 150, 0);
+        _listview->insert_column(L"çŠ¶æ€", 50, 1);
 
         _listview->set_item_count((int)_modules.size(), 0);
 
@@ -189,9 +189,9 @@ LRESULT ModuleManager::on_notify(HWND hwnd, taowin::Control * pc, int code, NMHD
             if(_listview->get_selected_items(&items)) {
                 int state = _get_enable_state_for_items(items);
 
-                // ËµÃ÷Ñ¡ÖĞÁË¶à¸ö²»Í¬×´Ì¬µÄÏî
+                // è¯´æ˜é€‰ä¸­äº†å¤šä¸ªä¸åŒçŠ¶æ€çš„é¡¹
                 if(state == -1) {
-                    int choice = msgbox(L"¡¾ÊÇ¡¿ÆôÓÃÕâĞ©Ä£¿é£»\n¡¾·ñ¡¿½ûÓÃÕâĞ©Ä£¿é¡£", MB_ICONQUESTION | MB_YESNOCANCEL);
+                    int choice = msgbox(L"ã€æ˜¯ã€‘å¯ç”¨è¿™äº›æ¨¡å—ï¼›\nã€å¦ã€‘ç¦ç”¨è¿™äº›æ¨¡å—ã€‚", MB_ICONQUESTION | MB_YESNOCANCEL);
                     if(choice == IDCANCEL) return 0;
                     state = choice == IDYES;
                 }
@@ -226,14 +226,14 @@ LRESULT ModuleManager::on_notify(HWND hwnd, taowin::Control * pc, int code, NMHD
             if(!_listview->get_selected_items(&items))
                 return 0;
 
-            // ÔÚÈ«²¿Îª½ûÓÃ×´Ì¬µÄÊ±ºò½øĞĞÌáÊ¾£¨²»È«²¿Îª½ûÓÃÊ±ºó±ß»áÌáÊ¾ÄÄĞ©´¦ÓÚÆôÓÃ×´Ì¬£¬´ËÌáÊ¾¾Í²»±ØÒªÁË£©
-            const wchar_t* title = items.size() == 1 ? _modules[items[0]]->name.c_str() : L"È·ÈÏ";
+            // åœ¨å…¨éƒ¨ä¸ºç¦ç”¨çŠ¶æ€çš„æ—¶å€™è¿›è¡Œæç¤ºï¼ˆä¸å…¨éƒ¨ä¸ºç¦ç”¨æ—¶åè¾¹ä¼šæç¤ºå“ªäº›å¤„äºå¯ç”¨çŠ¶æ€ï¼Œæ­¤æç¤ºå°±ä¸å¿…è¦äº†ï¼‰
+            const wchar_t* title = items.size() == 1 ? _modules[items[0]]->name.c_str() : L"ç¡®è®¤";
             int state = _get_enable_state_for_items(items);
-            if((!_get_is_open() || state == 0) && msgbox((L"È·¶¨ÒªÉ¾³ıÑ¡ÖĞµÄ " + std::to_wstring(items.size()) + L" Ïî£¿").c_str(), MB_OKCANCEL | MB_ICONQUESTION, title) != IDOK)
+            if((!_get_is_open() || state == 0) && msgbox((L"ç¡®å®šè¦åˆ é™¤é€‰ä¸­çš„ " + std::to_wstring(items.size()) + L" é¡¹ï¼Ÿ").c_str(), MB_OKCANCEL | MB_ICONQUESTION, title) != IDOK)
                 return 0;
 
             if(_get_is_open()) {
-                // ¼ÆËãÄÄĞ©Ä£¿éÒÑ¾­ÆôÓÃ£¬ÒÑ¾­ÆôÓÃµÄÄ£¿é²»ÄÜ±»É¾³ı
+                // è®¡ç®—å“ªäº›æ¨¡å—å·²ç»å¯ç”¨ï¼Œå·²ç»å¯ç”¨çš„æ¨¡å—ä¸èƒ½è¢«åˆ é™¤
                 std::wstring modules_enabled;
 
                 for(auto i = items.begin(); i != items.end();) {
@@ -255,9 +255,9 @@ LRESULT ModuleManager::on_notify(HWND hwnd, taowin::Control * pc, int code, NMHD
                 if(!modules_enabled.empty()) {
                     std::wstring msg;
 
-                    msg += L"ÒÔÏÂÄ£¿éÓÉÓÚÒÑ¾­ÆôÓÃ¶ø²»ÄÜÉ¾³ı£º\n\n";
+                    msg += L"ä»¥ä¸‹æ¨¡å—ç”±äºå·²ç»å¯ç”¨è€Œä¸èƒ½åˆ é™¤ï¼š\n\n";
                     msg += modules_enabled;
-                    msg += L"\nÊÇ·ñ½öÉ¾³ı±»½ûÓÃµÄÄ£¿é£¿";
+                    msg += L"\næ˜¯å¦ä»…åˆ é™¤è¢«ç¦ç”¨çš„æ¨¡å—ï¼Ÿ";
 
                     if(msgbox(msg, MB_ICONQUESTION | MB_OKCANCEL) == IDCANCEL)
                         return 0;
@@ -285,7 +285,7 @@ LRESULT ModuleManager::on_notify(HWND hwnd, taowin::Control * pc, int code, NMHD
     return 0;
 }
 
-// state == -1 ½ö¶ÔitemsÎª1¸öÊ±ÓĞĞ§
+// state == -1 ä»…å¯¹itemsä¸º1ä¸ªæ—¶æœ‰æ•ˆ
 void ModuleManager::_enable_items(const std::vector<int>& items, int state)
 {
     bool enable = state == -1 ? !_modules[items[0]]->enable : state == 1;
@@ -320,7 +320,7 @@ void ModuleManager::_modify_item(int i)
 
     auto onguid = [&](const GUID& guid, std::wstring* err) {
         if (_has_guid(guid) && !::IsEqualGUID(guid, mod->guid)) {
-            *err = L"´Ë GUID ÒÑ¾­´æÔÚ¡£";
+            *err = L"æ­¤ GUID å·²ç»å­˜åœ¨ã€‚";
             return false;
         }
 
@@ -349,16 +349,16 @@ void ModuleManager::_add_item()
         _listview->set_item_count((int)_modules.size(), LVSICF_NOINVALIDATEALL);
 
         int index = _listview->get_item_count() - 1;
-        _listview->ensure_visible(index);   // È·±£¿É¼û
-        _listview->set_item_state(-1, LVIS_SELECTED, 0); //È¡ÏûÑ¡ÖĞÆäËüµÄ
-        _listview->set_item_state(index, LVIS_SELECTED, LVIS_SELECTED); //Ñ¡ÖĞµ±Ç°ĞÂÔöµÄ
-        async_call([&]() {_listview->focus(); }); // Ö®Ç°ÓĞ´°¿Ú´¦ÓÚÕıÔÚ¹Ø±Õ×´Ì¬£¬ËùÒÔÒì²½µ÷
+        _listview->ensure_visible(index);   // ç¡®ä¿å¯è§
+        _listview->set_item_state(-1, LVIS_SELECTED, 0); //å–æ¶ˆé€‰ä¸­å…¶å®ƒçš„
+        _listview->set_item_state(index, LVIS_SELECTED, LVIS_SELECTED); //é€‰ä¸­å½“å‰æ–°å¢çš„
+        async_call([&]() {_listview->focus(); }); // ä¹‹å‰æœ‰çª—å£å¤„äºæ­£åœ¨å…³é—­çŠ¶æ€ï¼Œæ‰€ä»¥å¼‚æ­¥è°ƒ
         g_evtsys.trigger(L"project:new", entry);
     };
 
     auto onguid = [&](const GUID& guid, std::wstring* err) {
         if (_has_guid(guid)) {
-            *err = L"´Ë GUID ÒÑ¾­´æÔÚ¡£";
+            *err = L"æ­¤ GUID å·²ç»å­˜åœ¨ã€‚";
             return false;
         }
 
@@ -408,7 +408,7 @@ void ModuleManager::_on_item_state_change()
 
     if (!items.empty()) {
         int state = _get_enable_state_for_items(items);
-        _btn_enable->set_text(state != -1 ? (state == 1 ? L"½ûÓÃ" : L"ÆôÓÃ") : L"Æô/½û");
+        _btn_enable->set_text(state != -1 ? (state == 1 ? L"ç¦ç”¨" : L"å¯ç”¨") : L"å¯/ç¦");
     }
 }
 
@@ -437,7 +437,7 @@ void ModuleManager::_copy_items()
     }
 
     auto str = g_config.ws(JsonWrapper(objs)->dump(true, 4));
-    str += L'\n'; // Ç¿ÆÈÖ¢
+    str += L'\n'; // å¼ºè¿«ç—‡
 
     utils::set_clipboard_text(str);
 }
@@ -454,7 +454,7 @@ bool ModuleManager::_paste_items(bool test)
     auto json = json11::Json::parse(wstr.c_str(), err);
     if(!err.empty() || !json.is_array()) {
         if(!test) {
-            msgbox(L"ÎŞĞ§ JSON ×Ö·û´®¡£");
+            msgbox(L"æ— æ•ˆ JSON å­—ç¬¦ä¸²ã€‚");
         }
         return false;
     }
@@ -483,7 +483,7 @@ bool ModuleManager::_paste_items(bool test)
             count_added++;
 
         if(!test) {
-            // Ä¬ÈÏ¶¼ÊÇ²»¿ªÆôµÄ
+            // é»˜è®¤éƒ½æ˜¯ä¸å¼€å¯çš„
             m->enable = false;
             _modules.push_back(m);
             g_evtsys.trigger(L"project:new", m);
@@ -495,7 +495,7 @@ bool ModuleManager::_paste_items(bool test)
 
     if(!test && count_added) {
         _listview->set_item_count((int)_modules.size(), LVSICF_NOINVALIDATEALL);
-        msgbox(L"Õ³ÌùÁË " + std::to_wstring(count_added) + L" ¸ö¡£");
+        msgbox(L"ç²˜è´´äº† " + std::to_wstring(count_added) + L" ä¸ªã€‚");
     }
 
     return !!count_added;

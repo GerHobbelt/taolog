@@ -17,10 +17,10 @@ void EventDetail::get_metas(WindowMeta * metas)
 LPCTSTR EventDetail::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="ÏêÇé" size="512,480">
+<Window title="è¯¦æƒ…" size="512,480">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="1" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="1" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
@@ -44,7 +44,7 @@ LRESULT EventDetail::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
 
         auto logstr = _log->to_string(_gc);
 
-        // Ìæ»» \n Îª \r\n
+        // æ›¿æ¢ \n ä¸º \r\n
         std::wregex re(LR"(\r?\n)");
         auto rs = std::regex_replace(logstr, re, L"\r\n");
 
@@ -53,7 +53,7 @@ LRESULT EventDetail::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam)
     }
     case WM_CTLCOLORSTATIC:
     {
-        break; // ÔİÊ±²»Ê¹ÓÃ£¬ÑÛ»¨
+        break; // æš‚æ—¶ä¸ä½¿ç”¨ï¼Œçœ¼èŠ±
 
         HDC hdc = (HDC)wparam;
         HWND hwnd = (HWND)lparam;

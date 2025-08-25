@@ -42,12 +42,12 @@ taolog::LogDataUI::string LogDataUI::to_string(fnGetColumnName get_column_name) 
 
     ss << strText;
     ss << L"\r\n\r\n" << string(50, L'-') << L"\r\n\r\n";
-    ss << gc(0) << L"£º" << operator[](0) << L"\r\n";
-    ss << gc(2) << L"£º" << operator[](2) << L"\r\n";
-    ss << gc(3) << L"£º" << operator[](3) << L"\r\n";
+    ss << gc(0) << L"ï¼š" << operator[](0) << L"\r\n";
+    ss << gc(2) << L"ï¼š" << operator[](2) << L"\r\n";
+    ss << gc(3) << L"ï¼š" << operator[](3) << L"\r\n";
 
     auto& t = time;
-    _snwprintf(tmp, _countof(tmp), L"%s£º%d-%02d-%02d %02d:%02d:%02d:%03d\r\n",
+    _snwprintf(tmp, _countof(tmp), L"%sï¼š%d-%02d-%02d %02d:%02d:%02d:%03d\r\n",
         gc(1),
         t.wYear, t.wMonth, t.wDay,
         t.wHour, t.wMinute, t.wSecond, t.wMilliseconds
@@ -55,11 +55,11 @@ taolog::LogDataUI::string LogDataUI::to_string(fnGetColumnName get_column_name) 
 
     ss << tmp;
 
-    ss << gc(4) << L"£º" << operator[](4) << L"\r\n";
-    ss << gc(5) << L"£º" << file << L"\r\n"; // ÏÖÔÚÍêÕûÂ·¾¶
-    ss << gc(6) << L"£º" << operator[](6) << L"\r\n";
-    ss << gc(7) << L"£º" << operator[](7) << L"\r\n";
-    ss << gc(8) << L"£º" << operator[](8) << L"\r\n";
+    ss << gc(4) << L"ï¼š" << operator[](4) << L"\r\n";
+    ss << gc(5) << L"ï¼š" << file << L"\r\n"; // çŽ°åœ¨å®Œæ•´è·¯å¾„
+    ss << gc(6) << L"ï¼š" << operator[](6) << L"\r\n";
+    ss << gc(7) << L"ï¼š" << operator[](7) << L"\r\n";
+    ss << gc(8) << L"ï¼š" << operator[](8) << L"\r\n";
 
     return std::move(ss.str());
 }
@@ -72,9 +72,9 @@ LogDataUI::string LogDataUI::to_tip(fnGetColumnName get_column_name) const
 
     auto gc = get_column_name;
 
-    ss << gc(0) << L"£º" << L"\bw{44}" << operator[](0) << L"\bn";
-    ss << gc(2) << L"£º" << L"\bw{44}" << operator[](2) << L"\bn";
-    ss << gc(3) << L"£º" << L"\bw{44}" << operator[](3) << L"\bn";
+    ss << gc(0) << L"ï¼š" << L"\bw{44}" << operator[](0) << L"\bn";
+    ss << gc(2) << L"ï¼š" << L"\bw{44}" << operator[](2) << L"\bn";
+    ss << gc(3) << L"ï¼š" << L"\bw{44}" << operator[](3) << L"\bn";
 
     auto& t = time;
     _snwprintf(tmp, _countof(tmp), L"%d-%02d-%02d %02d:%02d:%02d:%03d",
@@ -82,14 +82,14 @@ LogDataUI::string LogDataUI::to_tip(fnGetColumnName get_column_name) const
         t.wHour, t.wMinute, t.wSecond, t.wMilliseconds
     );
 
-    ss << gc(1) << L"£º" << L"\bw{44}" << tmp << L"\bn";
+    ss << gc(1) << L"ï¼š" << L"\bw{44}" << tmp << L"\bn";
 
-    ss << gc(4) << L"£º" << L"\bw{44}" << operator[](4) << L"\bn";
-    ss << gc(5) << L"£º" << L"\bw{44}" <<          file << L"\bn"; // ÏÔÊ¾ÍêÕûÂ·¾¶
-    ss << gc(6) << L"£º" << L"\bw{44}" << operator[](6) << L"\bn";
-    ss << gc(7) << L"£º" << L"\bw{44}" << operator[](7) << L"\bn";
-    ss << gc(8) << L"£º" << L"\bw{44}" << operator[](8) << L"\bn";
-    ss << gc(9) << L"£º" << L"\bw{44}" << operator[](9) << L"\bn";
+    ss << gc(4) << L"ï¼š" << L"\bw{44}" << operator[](4) << L"\bn";
+    ss << gc(5) << L"ï¼š" << L"\bw{44}" <<          file << L"\bn"; // æ˜¾ç¤ºå®Œæ•´è·¯å¾„
+    ss << gc(6) << L"ï¼š" << L"\bw{44}" << operator[](6) << L"\bn";
+    ss << gc(7) << L"ï¼š" << L"\bw{44}" << operator[](7) << L"\bn";
+    ss << gc(8) << L"ï¼š" << L"\bw{44}" << operator[](8) << L"\bn";
+    ss << gc(9) << L"ï¼š" << L"\bw{44}" << operator[](9) << L"\bn";
 
     return std::move(ss.str());
 }
@@ -138,14 +138,14 @@ LogDataUI* LogDataUI::from_logdata(LogData* log, void* place /*= nullptr*/)
     const auto& log_data = *log;
     auto log_ui = place ? new (place) LogDataUI : new LogDataUI;
 
-    // ÈÕÖ¾ÕýÎÄÇ°ÃæµÄ²¿·Ö¶¼ÊÇÒ»ÑùµÄ
-    // ³ýÁËÈÕÖ¾Êä³ö·½³¤¶È¹Ì¶¨£¬½ÓÊÕ·½³¤¶È²»¹Ì¶¨
+    // æ—¥å¿—æ­£æ–‡å‰é¢çš„éƒ¨åˆ†éƒ½æ˜¯ä¸€æ ·çš„
+    // é™¤äº†æ—¥å¿—è¾“å‡ºæ–¹é•¿åº¦å›ºå®šï¼ŒæŽ¥æ”¶æ–¹é•¿åº¦ä¸å›ºå®š
     ::memcpy(log_ui, &log_data, sizeof(LogData));
 
     bool bIsUnicode = log_ui->flags & (int)ETW_LOGGER_FLAG::ETW_LOGGER_FLAG_UNICODE;
 
-    // Èç¹ûÊÇ·Ç Unicode ÔòÐèÒª×ª»»
-    // °üº¬ file, func, text
+    // å¦‚æžœæ˜¯éž Unicode åˆ™éœ€è¦è½¬æ¢
+    // åŒ…å« file, func, text
     if(!bIsUnicode) {
         char filebuf[_countof(log_ui->file)];
         ::strcpy(filebuf, (char*)log_ui->file);
@@ -156,7 +156,7 @@ LogDataUI* LogDataUI::from_logdata(LogData* log, void* place /*= nullptr*/)
         a2u(funcbuf, log_ui->func, _countof(log_ui->func));
     }
 
-    // ¿½±´ÈÕÖ¾ÕýÎÄ£¨cch°üÀ¨ '\0'£¬Òò¶øÊ¼ÖÕ´óÓÚÁã
+    // æ‹·è´æ—¥å¿—æ­£æ–‡ï¼ˆcchåŒ…æ‹¬ '\0'ï¼Œå› è€Œå§‹ç»ˆå¤§äºŽé›¶
     if(bIsUnicode) {
         const wchar_t* pText = (const wchar_t*)((char*)&log_data + sizeof(LogData));
         assert(pText[log_ui->cch - 1] == 0);

@@ -43,9 +43,9 @@ void ListviewColor::get_metas(WindowMeta * metas)
 LPCTSTR ListviewColor::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="ÑÕÉ«ÅäÖÃ" size="380,300">
+<Window title="é¢œè‰²é…ç½®" size="380,300">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
         <Font name="1" face="Consolas" size="16"/>
     </Resource>
     <Root>
@@ -54,35 +54,35 @@ LPCTSTR ListviewColor::get_skin_xml() const
                 <Label name="5" font="1" style="center,centerimage" exstyle="clientedge"/>
                 <Control width="5" />
                 <Vertical width="40">
-                    <Button name="fg5" text="Ç°¾°" /> <Button name="bg5" text="±³¾°" />
+                    <Button name="fg5" text="å‰æ™¯" /> <Button name="bg5" text="èƒŒæ™¯" />
                 </Vertical>
             </Horizontal>
             <Horizontal padding="5,5,5,5">
                 <Label name="4" font="1" style="center,centerimage" exstyle="clientedge"/>
                 <Control width="5" />
                 <Vertical width="40">
-                    <Button name="fg4" text="Ç°¾°" /> <Button name="bg4" text="±³¾°" />
+                    <Button name="fg4" text="å‰æ™¯" /> <Button name="bg4" text="èƒŒæ™¯" />
                 </Vertical>
             </Horizontal>
             <Horizontal padding="5,5,5,5">
                 <Label name="3" font="1" style="center,centerimage" exstyle="clientedge"/>
                 <Control width="5" />
                 <Vertical width="40">
-                    <Button name="fg3" text="Ç°¾°" /> <Button name="bg3" text="±³¾°" />
+                    <Button name="fg3" text="å‰æ™¯" /> <Button name="bg3" text="èƒŒæ™¯" />
                 </Vertical>
             </Horizontal>
             <Horizontal padding="5,5,5,5">
                 <Label name="2" font="1" style="center,centerimage" exstyle="clientedge"/>
                 <Control width="5" />
                 <Vertical width="40">
-                    <Button name="fg2" text="Ç°¾°" /> <Button name="bg2" text="±³¾°" />
+                    <Button name="fg2" text="å‰æ™¯" /> <Button name="bg2" text="èƒŒæ™¯" />
                 </Vertical>
             </Horizontal>
             <Horizontal padding="5,5,5,5">
                 <Label name="1" font="1" style="center,centerimage" exstyle="clientedge"/>
                 <Control width="5" />
                 <Vertical width="40">
-                    <Button name="fg1" text="Ç°¾°" /> <Button name="bg1" text="±³¾°" />
+                    <Button name="fg1" text="å‰æ™¯" /> <Button name="bg1" text="èƒŒæ™¯" />
                 </Vertical>
             </Horizontal>
         </Vertical>

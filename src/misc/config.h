@@ -14,77 +14,77 @@ public:
     typedef json11::Json Json;
 
 public:
-    // ¿Õ¶ÔÏó
+    // ç©ºå¯¹è±¡
     JsonWrapper()
     {
 
     }
 
-    // ´ÓÒÑÓĞ¹¹Ôì
+    // ä»å·²æœ‰æ„é€ 
     JsonWrapper(const Json& json)
         : _json(json)
     { }
 
-    // ¸½¼Ó
+    // é™„åŠ 
     void attach(const Json& json)
     {
         _json = json;
     }
 
-    // Ö±½Ó·µ»ØÔ­À´µÄ¶ÔÏó
+    // ç›´æ¥è¿”å›åŸæ¥çš„å¯¹è±¡
     operator Json()
     {
         return _json;
     }
 
 public:
-    // Ö±½Óµ÷ÓÃ Json ¶ÔÏóµÄ·½·¨
+    // ç›´æ¥è°ƒç”¨ Json å¯¹è±¡çš„æ–¹æ³•
     const Json* operator->()
     {
         return &_json;
     }
 
-    // Ö±½Óµ÷ÓÃÔ­À´µÄ [int] ·½·¨
+    // ç›´æ¥è°ƒç”¨åŸæ¥çš„ [int] æ–¹æ³•
     const Json& operator[](size_t i) const
     {
         return _json[i];
     }
 
-    // Ö±½Óµ÷ÓÃÔ­À´µÄ [const char*] ·½·¨
+    // ç›´æ¥è°ƒç”¨åŸæ¥çš„ [const char*] æ–¹æ³•
     const Json& operator[](const char* k) const
     {
         return _json[k];
     }
 
 public:
-    // Ö±½ÓÉèÖÃÊı×éÖµ
+    // ç›´æ¥è®¾ç½®æ•°ç»„å€¼
     Json& operator[](size_t i)
     {
         return as_arr()[i];
     }
 
-    // Ö±½ÓÉèÖÃ¶ÔÏó³ÉÔ±Öµ
+    // ç›´æ¥è®¾ç½®å¯¹è±¡æˆå‘˜å€¼
     Json& operator[](const char* k)
     {
         return as_obj()[k];
     }
 
 public:
-    // ×÷Îª·Ç const Êı×éÊ¹ÓÃ£¨ĞèÒªÊÖ¶¯È·±£ÎªÊı×é£©
+    // ä½œä¸ºé const æ•°ç»„ä½¿ç”¨ï¼ˆéœ€è¦æ‰‹åŠ¨ç¡®ä¿ä¸ºæ•°ç»„ï¼‰
     Json::array& as_arr()
     {
         assert(_json.is_array());
         return const_cast<Json::array&>(_json.array_items());
     }
 
-    // ×÷Îª·Ç const ¶ÔÏóÊ¹ÓÃ£¨ĞèÒªÊÖ¶¯È·±£Îª¶ÔÏó£©
+    // ä½œä¸ºé const å¯¹è±¡ä½¿ç”¨ï¼ˆéœ€è¦æ‰‹åŠ¨ç¡®ä¿ä¸ºå¯¹è±¡ï¼‰
     Json::object& as_obj()
     {
         assert(_json.is_object());
         return const_cast<Json::object&>(_json.object_items());
     }
 
-    // ×÷Îª·Ç const ×Ö·û´®Ê¹ÓÃ£¨ĞèÒªÊÖ¶¯È·±£Îª×Ö·û´®£©
+    // ä½œä¸ºé const å­—ç¬¦ä¸²ä½¿ç”¨ï¼ˆéœ€è¦æ‰‹åŠ¨ç¡®ä¿ä¸ºå­—ç¬¦ä¸²ï¼‰
     std::string& as_str()
     {
         assert(_json.is_string());
@@ -92,7 +92,7 @@ public:
     }
 
 public:
-    // ÅĞ¶Ïµ±Ç°¶ÔÏóÊÇ·ñÓĞÃûÎª k µÄÊı×é
+    // åˆ¤æ–­å½“å‰å¯¹è±¡æ˜¯å¦æœ‰åä¸º k çš„æ•°ç»„
     bool has_arr(const char* k)
     {
         assert(_json.is_object());
@@ -100,7 +100,7 @@ public:
         return _json.has_shape({{k,Json::Type::ARRAY}}, _err);
     }
 
-    // ÅĞ¶Ïµ±Ç°¶ÔÏóÊÇ·ñÓĞÃûÎª k µÄ¶ÔÏó
+    // åˆ¤æ–­å½“å‰å¯¹è±¡æ˜¯å¦æœ‰åä¸º k çš„å¯¹è±¡
     bool has_obj(const char* k)
     {
         assert(_json.is_object());
@@ -108,7 +108,7 @@ public:
         return _json.has_shape({{k,Json::Type::OBJECT}}, _err);
     }
 
-    // ÅĞ¶Ïµ±Ç°¶ÔÏóÊÇ·ñÓĞÃûÎª k µÄ×Ö·û´®
+    // åˆ¤æ–­å½“å‰å¯¹è±¡æ˜¯å¦æœ‰åä¸º k çš„å­—ç¬¦ä¸²
     bool has_str(const char* k)
     {
         assert(_json.is_object());
@@ -116,7 +116,7 @@ public:
         return _json.has_shape({{k, Json::Type::STRING}}, _err);
     }
 
-    // »ñÈ¡ [k] ÎªÊı×é£¨È·±££©
+    // è·å– [k] ä¸ºæ•°ç»„ï¼ˆç¡®ä¿ï¼‰
     JsonWrapper arr(const char* k)
     {
         if(!has_arr(k))
@@ -125,7 +125,7 @@ public:
         return _json[k];
     }
 
-    // »ñÈ¡ [k]  Îª¶ÔÏó£¨È·±££©
+    // è·å– [k]  ä¸ºå¯¹è±¡ï¼ˆç¡®ä¿ï¼‰
     JsonWrapper obj(const char* k)
     {
         if(!has_obj(k))
@@ -134,7 +134,7 @@ public:
         return _json[k];
     }
 
-    // »ñÈ¡ [k] Îª×Ö·û´®£¨È·±££©
+    // è·å– [k] ä¸ºå­—ç¬¦ä¸²ï¼ˆç¡®ä¿ï¼‰
     JsonWrapper str(const char* k)
     {
         if(!has_str(k))
@@ -167,15 +167,15 @@ public:
     JsonWrapper operator[](size_t i) { return _obj[i]; }
     JsonWrapper operator[](const char* k) { return _obj[k]; }
 
-    // ×ª»» std::string µ½ std::wstring
+    // è½¬æ¢ std::string åˆ° std::wstring
     static std::wstring ws(const std::string& s);
-    // ×ª»» std::wstring µ½ std::string
+    // è½¬æ¢ std::wstring åˆ° std::string
     static std::string us(const std::wstring& s);
 
 protected:
-    std::wstring _file;     // µ±Ç°ÅäÖÃÂ·¾¶
-    JsonWrapper  _obj;      // ÅäÖÃÎÄ¼ş¸ù¶ÔÏóÔªËØ
-    bool         _new;      // ÊÇ·ñÊÇĞÂ´´½¨µÄÅäÖÃÎÄ¼ş
+    std::wstring _file;     // å½“å‰é…ç½®è·¯å¾„
+    JsonWrapper  _obj;      // é…ç½®æ–‡ä»¶æ ¹å¯¹è±¡å…ƒç´ 
+    bool         _new;      // æ˜¯å¦æ˜¯æ–°åˆ›å»ºçš„é…ç½®æ–‡ä»¶
 
 };
 

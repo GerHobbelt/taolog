@@ -55,7 +55,7 @@ public:
         assign(p);
     }
 
-    // TODO 为啥需要这个？
+    // TODO 涓哄暐闇�瑕佽繖涓紵
     EventArg(std::nullptr_t p)
     {
         assign((void*)p);

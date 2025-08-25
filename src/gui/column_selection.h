@@ -3,11 +3,11 @@
 namespace taolog {
 
 struct Column {
-	std::string id;		// ÓÃÓÚÄÚ²¿Ê¶±ğÁĞ
+	std::string id;		// ç”¨äºå†…éƒ¨è¯†åˆ«åˆ—
     std::wstring name;
     bool show;
     int width;
-    bool valid;         // ÁÙÊ±Ê¹ÓÃ
+    bool valid;         // ä¸´æ—¶ä½¿ç”¨
     int index;
 
     Column(const wchar_t* name_, bool show_, int width_, const char* id_)

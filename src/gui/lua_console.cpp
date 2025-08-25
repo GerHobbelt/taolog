@@ -48,7 +48,7 @@ int LuaConsoleWindow::LuaPrint(lua_State* L)
 
 int LuaConsoleWindow::LuaOSExit(lua_State* L)
 {
-    if(__this->msgbox(L"È·¶¨¹Ø±Õ´°¿Ú£¿", MB_ICONQUESTION | MB_OKCANCEL) == IDOK) {
+    if(__this->msgbox(L"ç¡®å®šå…³é—­çª—å£ï¼Ÿ", MB_ICONQUESTION | MB_OKCANCEL) == IDOK) {
         __this->post_message(WM_CLOSE);
     }
 
@@ -63,19 +63,19 @@ void LuaConsoleWindow::execute()
 
     if(ret != LUA_OK) {
         std::wstring err;
-        // lua µÄ luaO_chunkid º¯Êı»á½ØÈ¡½Å±¾µÄ²¿·ÖÓÃ×÷´íÎóÌáÊ¾
-        // È»¶øÆä²»Ö§³Ö utf-8£¬¿ÉÄÜµ¼ÖÂÒ»¸öÍêÕûµÄ×Ö·û±»½Ø¶Ï
-        // ²»ÍêÕûµÄ×Ö·ûµ÷ÓÃ codecvt »áÅ×Òì³£¡£
+        // lua çš„ luaO_chunkid å‡½æ•°ä¼šæˆªå–è„šæœ¬çš„éƒ¨åˆ†ç”¨ä½œé”™è¯¯æç¤º
+        // ç„¶è€Œå…¶ä¸æ”¯æŒ utf-8ï¼Œå¯èƒ½å¯¼è‡´ä¸€ä¸ªå®Œæ•´çš„å­—ç¬¦è¢«æˆªæ–­
+        // ä¸å®Œæ•´çš„å­—ç¬¦è°ƒç”¨ codecvt ä¼šæŠ›å¼‚å¸¸ã€‚
         try {
             err = g_config.ws(lua_tostring(_L, -1));
         }
         catch(...) {
-            err = L"LUA½âÂë´íÎó£¨ÄÚ²¿´íÎó£©¡£";
+            err = L"LUAè§£ç é”™è¯¯ï¼ˆå†…éƒ¨é”™è¯¯ï¼‰ã€‚";
         }
         _root->find<taowin::Control>(L"bot")->set_visible(false);
         _root->find<taowin::Control>(L"stabar")->set_visible(true);
         _lbl_status->set_text(err.c_str());
-        msgbox(err.c_str(), MB_ICONERROR, L"LUA½Å±¾´íÎó");
+        msgbox(err.c_str(), MB_ICONERROR, L"LUAè„šæœ¬é”™è¯¯");
         _edt_script->focus();
         lua_pop(_L, 1);
     }
@@ -95,28 +95,28 @@ void LuaConsoleWindow::append_result(const char* s, int len)
 LPCTSTR LuaConsoleWindow::get_skin_xml() const
 {
     LPCTSTR json = LR"tw(
-<Window title="LUA ¿ØÖÆÌ¨" size="750,450">
+<Window title="LUA æ§åˆ¶å°" size="750,450">
     <Resource>
-        <Font name="default" face="Î¢ÈíÑÅºÚ" size="12"/>
-        <Font name="14" face="Î¢ÈíÑÅºÚ" size="14"/>
+        <Font name="default" face="å¾®è½¯é›…é»‘" size="12"/>
+        <Font name="14" face="å¾®è½¯é›…é»‘" size="14"/>
         <Font name="consolas" face="Consolas" size="12"/>
     </Resource>
     <Root>
         <Vertical padding="5,5,5,0">
             <Horizontal>
                 <Vertical>
-                    <Label height="20" text="ÊäÈë LUA ½Å±¾£¨F5Ö´ĞĞ£¬F6Çå¿Õ£©£º" />
+                    <Label height="20" text="è¾“å…¥ LUA è„šæœ¬ï¼ˆF5æ‰§è¡Œï¼ŒF6æ¸…ç©ºï¼‰ï¼š" />
                     <TextBox name="script" font="consolas" style="multiline,vscroll,hscroll,wantreturn" exstyle="clientedge"/>
                 </Vertical>
                 <Control width="5" />
                 <Vertical>
-                    <Label height="20" text="½á¹û£¨F7Çå¿Õ£©£º" />
+                    <Label height="20" text="ç»“æœï¼ˆF7æ¸…ç©ºï¼‰ï¼š" />
                     <TextBox name="result" font="consolas" style="multiline,vscroll,hscroll,wantreturn" exstyle="clientedge"/>
                 </Vertical>
             </Horizontal>
             <Control name="bot" height="5" />
             <Horizontal name="stabar" height="20">
-                <Label style="centerimage,center" width="40" text="´íÎó£º" />
+                <Label style="centerimage,center" width="40" text="é”™è¯¯ï¼š" />
                 <Label font="consolas" style="centerimage" name="status" />
             </Horizontal>
         </Vertical>
@@ -134,15 +134,15 @@ LRESULT LuaConsoleWindow::handle_message(UINT umsg, WPARAM wparam, LPARAM lparam
     {
         _L = luaL_newstate();
         luaL_openlibs(_L);
-        // Ìæ»»µô print() º¯Êı 
+        // æ›¿æ¢æ‰ print() å‡½æ•° 
         lua_pushcfunction(_L, LuaConsoleWindow::LuaPrint);
         lua_setglobal(_L, "print");
-        // Ìæ»»µô os.exit() º¯Êı
+        // æ›¿æ¢æ‰ os.exit() å‡½æ•°
         lua_getglobal(_L, "os");
         lua_pushcfunction(_L, LuaConsoleWindow::LuaOSExit);
         lua_setfield(_L, -2, "exit");
         lua_pop(_L, 1);
-        // ×¢²á±£´æ±¾´°¿Ú¾ä±ú
+        // æ³¨å†Œä¿å­˜æœ¬çª—å£å¥æŸ„
         lua_pushlightuserdata(_L, this);
         lua_setglobal(_L, "__this");
 
